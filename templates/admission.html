@@ -187,37 +187,42 @@
                <p>Email:- test@email.com</p>
                <p>Phone:- 34563463434</p>
            </div>
-    
+           <form method="POST" action="{{url_for('contact')}}">
            <div class="col-md-6">
                
              <div class="form-group">
-                 <label>Name</label>
-                 <input type="text" class="form-control" placeholder="Name">
+                {{form.hidden_tag()}}
+                {{ form.name.label()}}
+                {{form.name(class="form-control")}}
+             </div>
+             <div class="form-group">
+                {{ form.phno.label()}}
+                {{form.phno (class="form-control")}}
              </div>
     
              <div class="form-group">
-                 <label>Email</label>
-                 <input type="text" class="form-control" placeholder="Email">
+                {{ form.email.label()}}
+                {{form.email(class="form-control")}}
              </div>
     
              <div class="form-group">
-                <label>class</label>
-                <input type="text" class="form-control" placeholder="Class">
+                {{ form.classval.label()}}
+                {{form.classval(class="form-control")}}
             </div>
             <div class="form-group">
-                <label>age</label>
-                <input type="text" class="form-control" placeholder="age">
+                {{ form.age.label()}}
+                {{form.age(class="form-control")}}
             </div>
             <div class="form-group">
-                <label>Address</label>
-                 
-             <textarea  class="form-control" rows="7"></textarea>
+                {{ form.address.label()}}
+                {{form.address(class="form-control")}}
             </div>
          
     
              <div class="form-group">
-                 <button class="btn btn-primary btn-block" action="submit">Submit</button>
+                {{form.submit(class="btn btn-primary btn-block")}}
              </div>
+             </form>
     
            </div>
     
