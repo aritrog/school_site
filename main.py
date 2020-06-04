@@ -11,9 +11,6 @@ db=SQLAlchemy(app)
 
 
 
-#class admissioninfo(db.Model):
-#	id=db.column(db.Integer)
-
 @app.route('/')
 def home():
 	return """you have reached home"""
