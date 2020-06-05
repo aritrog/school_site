@@ -20,15 +20,15 @@ def about():
 	return render_template('about.html')
 
 @app.route('/course',methods=['GET','POST'])
-def about():
+def course():
 	return render_template('course.html')
 
 @app.route('/blog',methods=['GET','POST'])
-def about():
+def blog():
 	return render_template('blog.html')
 
 @app.route('/contact',methods=['GET','POST'])
-def about():
+def contact():
 	return render_template('contact.html')
 
 @app.route('/admission', methods=['GET','POST'])
