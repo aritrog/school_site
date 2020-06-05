@@ -13,13 +13,17 @@ def contact():
 	if form.validate_on_submit():
 		flash("Your message has been send to the authorities concern!")
 
+@app.route('/about',methods=['GET','POST'])
+def about():
+	return render_template('about.html')
+
 @app.route('/admission', methods=['GET','POST'])
 def admission():
 	form=AdmissionForm(request.form)
 	chc=form.validate_on_submit()
 	print(chc)
 	if chc:
-		print("submited")
+		print("submitted")
 		flash(f"{form.name.data} have been registered in opur database","success")
 		return redirect(url_for('home'))
 	print(form.errors)	
