@@ -19,10 +19,6 @@ def contact():
 def about():
 	return render_template('about.html')
 
-@app.route('/home',methods=['GET','POST'])
-def about():
-	return render_template('index.html')
-
 @app.route('/course',methods=['GET','POST'])
 def about():
 	return render_template('course.html')
