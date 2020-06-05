@@ -17,6 +17,22 @@ def contact():
 def about():
 	return render_template('about.html')
 
+@app.route('/home',methods=['GET','POST'])
+def about():
+	return render_template('index.html')
+
+@app.route('/course',methods=['GET','POST'])
+def about():
+	return render_template('course.html')
+
+@app.route('/blog',methods=['GET','POST'])
+def about():
+	return render_template('blog.html')
+
+@app.route('/contact',methods=['GET','POST'])
+def about():
+	return render_template('contact.html')
+
 @app.route('/admission', methods=['GET','POST'])
 def admission():
 	form=AdmissionForm(request.form)
