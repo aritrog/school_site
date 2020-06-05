@@ -27,10 +27,6 @@ def course():
 def blog():
 	return render_template('blog.html')
 
-@app.route('/contact',methods=['GET','POST'])
-def contact():
-	return render_template('contact.html')
-
 @app.route('/admission', methods=['GET','POST'])
 def admission():
 	form=AdmissionForm(request.form)
