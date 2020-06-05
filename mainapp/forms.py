@@ -10,3 +10,11 @@ class AdmissionForm(FlaskForm):
 	classval= SelectField('Class*', choices=[('nur', 'Nursery'), ('lkg', 'LKG'), ('ukg', 'UKG'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8')]) 
 	address = StringField('Address*',validators=[DataRequired(),Length(min=10)])
 	submit= SubmitField('Submit')
+
+
+class ContactForm(FlaskForm):
+		"""docstring for ContactForm"FlaskFormef __init__(self, arg):
+			super(ContactForm,FlaskForm.__init__()
+			self.arg = arg"""
+		name = StringField('Name*',validators=[DataRequired(),Length(min=2,max=20)])
+		
