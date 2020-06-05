@@ -1,4 +1,5 @@
-from mainapp import app
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy 
 
 #init main
 app=Flask(__name__)
@@ -7,7 +8,4 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///admission.db'
 db=SQLAlchemy(app)
 
 
-
-# Run server
-if __name__=="__main__":
-	app.run(debug=True)
+from mainapp import routes

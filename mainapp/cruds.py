@@ -1,4 +1,5 @@
-from main import db
+from datetime import datetime
+from mainapp import db
 
 
 class Admissiondb(db.Model):
