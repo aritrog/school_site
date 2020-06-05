@@ -1,8 +1,10 @@
+from flask import url_for,request,render_template,redirect,flash
 from mainapp.cruds import Admissiondb
+from mainapp.forms import AdmissionForm
 from mainapp import app
 @app.route('/')
 def home():
-	return """you have reached home"""
+	return render_template('index.html')
 
 
 @app.route('/contact', methods=['GET','POST'])
@@ -10,7 +12,6 @@ def contact():
 	form=ContactForm(request.form)
 	if form.validate_on_submit():
 		flash("Your message has been send to the authorities concern!")
-
 
 @app.route('/admission', methods=['GET','POST'])
 def admission():
