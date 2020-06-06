@@ -13,11 +13,15 @@ def contact():
 	if form.validate_on_submit():
 		flash("Your message has been send to the authorities concern!")
 		return redirect(url_for('home'))
-	return render_template('contact.html')	
+	return render_template('contact.html',form=form)	
 
 @app.route('/about',methods=['GET','POST'])
 def about():
 	return render_template('about.html')
+
+@app.route('/gallery',methods=['GET','POST'])
+def gallery():
+	return render_template('gallery.html')
 
 @app.route('/course',methods=['GET','POST'])
 def course():
@@ -26,6 +30,10 @@ def course():
 @app.route('/blog',methods=['GET','POST'])
 def blog():
 	return render_template('blog.html')
+
+@app.route('/teachers',methods=['GET','POST'])
+def teachers():
+	return render_template('teachers.html')
 
 @app.route('/admission', methods=['GET','POST'])
 def admission():
