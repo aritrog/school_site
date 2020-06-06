@@ -150,6 +150,7 @@
 │       ├── blog.html
 │       ├── contact.html
 │       ├── course.html
+│       ├── gallery.html
 │       ├── index.html
 │       ├── pricing.html
 │       └── teachers.html
@@ -158,6 +159,6 @@
 ├── __pycache__
 │   └── admissionform.cpython-37.pyc
 ├── README.md
-└── visualise_files.txt
+└── visualize_files.txt
 
-16 directories, 144 files
+16 directories, 145 files
