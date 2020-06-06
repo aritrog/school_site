@@ -128,6 +128,8 @@
                         <div id="message"></div>
                         <form id="contactform" class="" action="submit" name="contactform" method="GET">
                             <div class="row row-fluid">
+                                <form method="POST" action="{{url_for('contact')}}">
+                                    {{form.hidden_tag()}}
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     {{form.fname(class="form-control")}}
                                 </div>
@@ -144,8 +146,10 @@
                                     {{form.message(class="form-control")}}
                                 </div>
                                 <div class="text-center pd">
-                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit Your Query</button>
+                                    {{form.submit(class="btn btn-light btn-radius btn-brd grd1 btn-block")}}
+
                                 </div>
+                            </form>
                             </div>
                         </form>
                     </div>

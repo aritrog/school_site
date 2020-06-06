@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField,SelectField,SubmitField
+from wtforms import StringField,IntegerField,SelectField,SubmitField,TextField
 from wtforms.validators import DataRequired, Length
 
 class AdmissionForm(FlaskForm):
@@ -18,6 +18,7 @@ class ContactForm(FlaskForm):
 			self.arg = arg"""
 		fname = StringField('Name*',validators=[DataRequired(),Length(min=2,max=20)],render_kw={"placeholder": "First Name"})
 		lname = StringField('Name*',validators=[DataRequired(),Length(min=2,max=20)],render_kw={"placeholder": "Last Name"})
-		email = StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email"}
-		phno= StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)],render_kw={"placeholder": "Phone No."})
-		message= TextField('Message*',validators=[DataRequired()],,render_kw={"placeholder": "Message"})
+		email = StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email"})
+		phno = StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)],render_kw={"placeholder": "Phone No."})
+		message= TextField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
+		submit= SubmitField('Submit your query')
