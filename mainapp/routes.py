@@ -19,6 +19,10 @@ def contact():
 def about():
 	return render_template('about.html')
 
+@app.route('/gallery',methods=['GET','POST'])
+def gallery():
+	return render_template('gallery.html')
+
 @app.route('/course',methods=['GET','POST'])
 def course():
 	return render_template('course.html')
