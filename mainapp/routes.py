@@ -11,6 +11,7 @@ def home():
 def contact():
 	form=ContactForm(request.form)
 	if form.validate_on_submit():
+
 		flash("Your message has been send to the authorities concern!")
 		return redirect(url_for('home'))
 	return render_template('contact.html',form=form)	
@@ -39,6 +40,15 @@ def teachers():
 def admission():
 	form=AdmissionForm(request.form)
 	if form.validate_on_submit():
+		user = Admissiondb(name=form.username.data,
+						   email=form.email.data, 
+						   phno=form.phno.data,
+						   age=form.age.data,
+						   classval=form.classval.data,
+						   address=form.address.data
+						)
+		db.session.add(user)
+		db.session.commit()
 		flash(f"{form.name.data} have been registered in our database","success")
 		return redirect(url_for('home'))
 	print(form.errors)	
