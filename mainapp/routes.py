@@ -40,6 +40,7 @@ def teachers():
 def admission():
 	form=AdmissionForm(request.form)
 	if form.validate_on_submit():
+		print(form.data.classval)
 		user = Admissiondb(name=form.username.data,
 						   email=form.email.data, 
 						   phno=form.phno.data,
