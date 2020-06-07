@@ -126,9 +126,8 @@
                 <div class="col-xl-6 col-md-12 col-sm-12">
                     <div class="contact_form">
                         <div id="message"></div>
-                        <form id="contactform" class="" action="submit" name="contactform" method="GET">
+                        <form id="contactform" class="" action="{{url_for('contact')}}" name="contactform" method="POST">
                             <div class="row row-fluid">
-                                <form method="POST" action="{{url_for('contact')}}">
                                     {{form.hidden_tag()}}
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     {{form.fname(class="form-control")}}
@@ -149,7 +148,6 @@
                                     {{form.submit(class="btn btn-light btn-radius btn-brd grd1 btn-block")}}
 
                                 </div>
-                            </form>
                             </div>
                         </form>
                     </div>
@@ -167,7 +165,7 @@
         <div class="container">
             <div class="row logos">
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_01.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="{{url_for('static',filename='images/logo_01.png')}}" alt="" class="img-repsonsive"></a>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
                     <a href="#"><img src="images/logo_02.png" alt="" class="img-repsonsive"></a>
@@ -260,7 +258,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCKjLTXdq6Db3Xit_pW_GK4EXuPRtnod4o"></script>
 	<!-- Mapsed JavaScript -->
 	<script src="{{url_for('static',filename='js/mapsed.js')}}"></script>
-	<script src="{{url_for('static',filename=' js/01-custom-places-example.js')}}"></script>
+	<script src="{{url_for('static',filename='js/01-custom-places-example.js')}}"></script>
     <!-- ALL PLUGINS -->
     <script src="{{ url_for('static', filename='js/custom.js')}} "></script>
 
