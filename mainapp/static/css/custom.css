@@ -1,2 +1,22 @@
 
 /** ADD YOUR AWESOME CODES HERE **/
+
+.form-square{
+	border: 1px solid black;
+	widows: 100%;
+	padding: 1rem;
+	overflow: auto;
+	margin: 2rem;
+	box-shadow: 0 0 5px blue;
+}
+.form-layout{
+	width: 100%;
+	padding: 1rem;
+}
+.form-crazy{
+	border: none;
+	padding-left: 1rem;
+}
+.fltl{
+	float:left;
+}

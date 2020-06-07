@@ -71,7 +71,7 @@ class AdmissionForm(FlaskForm):
 
 	#Income
 
-	fincome=RadioField('Gender*', choices=[('1-','Less than 1 lac'),('3-','Upto 3 lacs'),('3+','More than 3 lacs')],validators=[DataRequired()])
+	famincome=RadioField('Family Income*', choices=[('1-','Less than 1 lac'),('3-','Upto 3 lacs'),('3+','More than 3 lacs')],validators=[DataRequired()])
 
 	# More Info
 

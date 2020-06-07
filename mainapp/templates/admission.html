@@ -15,6 +15,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
+
     <link rel="shortcut icon" href="{{url_for('static',filename='images/favicon.ico')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{url_for('static',filename='images/apple-touch-icon.png')}}">
 
@@ -31,6 +32,8 @@
     <!--<script>var exports = {};</script>-->
     <!-- Modernizer for Portfolio -->
     <script src="{{url_for('static',filename='js/modernizer.js')}}"></script>
+    <!-- font style -->
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Oswald&display=swap" rel="stylesheet"> 
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -112,91 +115,109 @@
 		</div>
 	</div>
     <div class="container contact-form">
-        <h1>Admission form</h1>
         <hr>
     
         <div class="row">
-            <form method="POST" action="{{url_for('admission')}}">
+            <form class="form-layout" method="POST" action="{{url_for('admission')}}">
+                <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Admission form</h1>
 
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Student Details</h1>
+                    <div class="form-group">
+                        {{form.name.label()}}
+                        {{form.name(class="form-control")}}
+                    </div>
+                    <div class="form-group">
+                        {{form.email.label()}}
+                        {{form.email(class="form-control")}}
+                    </div>
+                    <div class="form-group" style="width: 40%;float: left;margin-right : 8%;min-width: 200px">
+                        {{form.dob.label()}}
+                        {{form.dob(class="form-control")}}
+                    </div>
+                    <div class="form-group" style="width: 25%;float: left;margin-right : 0;min-width: 200px">
+                        {{form.gender.label()}}
+                        {{form.gender(class="form-control form-crazy")}}
+                    </div>
+                    <div class="form-group" style="width: 25%;float: left;min-width: 200px">
+                        {{form.nationality.label()}}
+                        {{form.nationality(class="form-control form-crazy")}}
+                    </div>
+                </div>    
+
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Father's Details</h1>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.fathername.label()}}
+                        {{form.fathername(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 40vh;min-width: 250px;margin-right: 1.3rem">
+                        {{form.fphno.label()}}
+                        {{form.fphno(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 25vh;margin-right: 1.3rem">
+                        {{form.fage.label()}}
+                        {{form.fage(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="margin-right: 1.3rem">
+                        {{form.fedu.label()}}
+                        {{form.fedu(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl">
+                        {{form.fincome.label()}}
+                        {{form.fincome(class="form-control")}}
+                    </div>
+                    
                 </div>
-                <div class="form-group">
-                    {{form.email.label()}}
-                    {{form.email(class="form-control")}}
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Mother's Details</h1>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.mothername.label()}}
+                        {{form.fathername(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 40vh;min-width: 250px;margin-right: 1.3rem">
+                        {{form.mphno.label()}}
+                        {{form.mphno(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 25vh;margin-right: 1.3rem">
+                        {{form.mage.label()}}
+                        {{form.mage(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="margin-right: 1.3rem">
+                        {{form.medu.label()}}
+                        {{form.medu(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl">
+                        {{form.mincome.label()}}
+                        {{form.mincome(class="form-control")}}
+                    </div>
+                    
                 </div>
-                <div class="form-group">
-                    {{form.dob.label()}}
-                    {{form.dob(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.gender.label()}}
-                    {{form.gender(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.nationality.label()}}
-                    {{form.nationality(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
+                    
+                
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Guardian's Details [optional]</h1>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.guardianname.label()}}
+                        {{form.guardianname(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 40vh;min-width: 250px;margin-right: 1.3rem">
+                        {{form.gphno.label()}}
+                        {{form.gphno(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 25vh;margin-right: 1.3rem">
+                        {{form.gage.label()}}
+                        {{form.gage(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="margin-right: 1.3rem">
+                        {{form.gedu.label()}}
+                        {{form.gedu(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl">
+                        {{form.gincome.label()}}
+                        {{form.gincome(class="form-control")}}
+                    </div>
+                    
                 </div>
                 <div class="form-group">
                     {{form.name.label()}}
