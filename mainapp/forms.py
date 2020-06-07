@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField,SelectField,SubmitField,TextField,DateField,RadioField
+from wtforms import StringField,IntegerField,SelectField,SubmitField,TextField,DateField,RadioField,BooleanField
 from wtforms.validators import DataRequired, Length
 
 class AdmissionForm(FlaskForm):
@@ -44,15 +44,12 @@ class AdmissionForm(FlaskForm):
 	telphn=StringField('Telephone No.')
 
 	#Temporary Address
-
-	thldno=StringField('Holding No. / Quarters No. *',validators=[DataRequired()])
-	tcity=StringField('City*',validators=[DataRequired()])
-	tdist=StringField('District*',validators=[DataRequired()])
-	tstate=StringField('State*',validators=[DataRequired()])
-	tpin=StringField('PIN*',validators=[DataRequired(),Length(min=6,max=6)])
-	tephno=StringField('Emergency Phone No.*',validators=[DataRequired(),Length(min=10,max=10)])
-	tmobile=StringField('Mobile*',validators=[DataRequired(),Length(min=10,max=10)])
-	ttelphn=StringField('Telephone No.')	
+	chck=BooleanField(' Same as Permanent Address',default=False)
+	thldno=StringField('Holding No. / Quarters No. *')
+	tcity=StringField('City*')
+	tdist=StringField('District*')
+	tstate=StringField('State*')
+	tpin=StringField('PIN*',validators=[Length(min=6,max=6)])
 
 
 	#Additional Information
