@@ -4,7 +4,6 @@ from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm
 from mainapp import app
 
 
-
 @app.route('/',methods=['GET','POST'])
 def home():
 	show_form=True
