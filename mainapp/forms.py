@@ -102,3 +102,7 @@ class ContactForm(FlaskForm):
 	phno = StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)],render_kw={"placeholder": "Phone No."})
 	message= TextField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
 	submit= SubmitField('Submit your query')
+
+class NewsletterForm(FlaskForm):
+	email = StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email"})
+	submit= SubmitField('Subscribe')

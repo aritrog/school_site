@@ -119,6 +119,7 @@
     
         <div class="row">
             <form class="form-layout" method="POST" action="{{url_for('admission')}}">
+                {{form.hidden_tag()}}
                 <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Admission form</h1>
                 <div class="form-square">
                     <h1 style="color:  #4068dd ;font-weight: 500;text-align: center;">Note</h1>
