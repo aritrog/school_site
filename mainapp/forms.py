@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,IntegerField,SelectField,SubmitField,TextField,DateField,RadioField,BooleanField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length, EqualTo
+from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 class AdmissionForm(FlaskForm):
 	
@@ -13,23 +14,23 @@ class AdmissionForm(FlaskForm):
 
 	#parental Info
 
-	fathername = StringField('Father Name*',validators=[DataRequired(),Length(min=2,max=20)])
-	fage= IntegerField("Age*",validators=[DataRequired()])
-	fedu = StringField('Education*',validators=[DataRequired(),Length(min=2,max=10)])
-	fincome= IntegerField('Annual Income*',validators=[DataRequired()])
-	fphno= StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)])
+	fathername = StringField('Father Name*',validators=[Length(min=2,max=20)])
+	fage= IntegerField("Age*",validators=[])
+	fedu = StringField('Education*',validators=[Length(min=2,max=10)])
+	fincome= IntegerField('Annual Income*',validators=[])
+	fphno= StringField('Phone no*',validators=[Length(min=10,max=10)])
 	
-	mothername = StringField('Mother Name*',validators=[DataRequired(),Length(min=2,max=20)])
-	mage= IntegerField("Age*",validators=[DataRequired()])
-	medu = StringField('Education*',validators=[DataRequired(),Length(min=2,max=10)])
-	mincome= IntegerField('Annual Income*',validators=[DataRequired()])
-	mphno= StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)])
+	mothername = StringField('Mother Name*',validators=[Length(min=2,max=20)])
+	mage= IntegerField("Age*",validators=[])
+	medu = StringField('Education*',validators=[Length(min=2,max=10)])
+	mincome= IntegerField('Annual Income*',validators=[])
+	mphno= StringField('Phone no*',validators=[Length(min=10,max=10)])
 	
-	guardianname = StringField('Guardian Name*',validators=[DataRequired(),Length(min=2,max=20)])
-	gage= IntegerField("Age*",validators=[DataRequired()])
-	gedu = StringField('Education*',validators=[DataRequired(),Length(min=2,max=10)])
-	gincome= IntegerField('Annual Income*',validators=[DataRequired()])
-	gphno= StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)])
+	guardianname = StringField('Guardian Name*',validators=[Length(min=2,max=20)])
+	gage= IntegerField("Age*",validators=[])
+	gedu = StringField('Education*',validators=[Length(min=2,max=10)])
+	gincome= IntegerField('Annual Income*',validators=[])
+	gphno= StringField('Phone no*',validators=[Length(min=10,max=10)])
 
 
 	#Permanent address
@@ -54,7 +55,7 @@ class AdmissionForm(FlaskForm):
 
 	#Additional Information
 
-	caste=RadioField('Caste[attach a copy of attested certificate]*', choices=[('gen','General'),('sc','S.C.'),('st','S.T.'),('obc','OBC'),('othr','Others')],validators=[DataRequired()])
+	caste=RadioField('Caste [ attach a copy of attested certificate ]*', choices=[('gen','General'),('sc','S.C.'),('st','S.T.'),('obc','OBC'),('othr','Others')],validators=[DataRequired()])
 	mtoungue=RadioField('Mother Tongue*', choices=[('ben','Bengali'),('hin','Hindi'),('eng','English'),('othr','Others')],validators=[DataRequired()])
 	lang=StringField('Languages Known*',validators=[DataRequired(),Length(min=2,max=20)])
 
@@ -75,8 +76,21 @@ class AdmissionForm(FlaskForm):
 	pschool=StringField('Previous School',validators=[Length(min=2,max=20)])
 	classval= SelectField('Class*', choices=[('nur', 'Nursery'), ('lkg', 'LKG'), ('ukg', 'UKG'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8')]) 
 	reference=StringField('Reference',validators=[Length(min=2,max=20)])
+	xdoc=StringField('Xerox Copies of')
+	odoc=StringField('Original copies of')
+	subj=StringField('Subjects opted for *', validators=[DataRequired()])
+	coa=StringField('Wgether applied for change of Date of Birth/ Address ?')
 
 
+	#uploads
+
+	document = FileField('Document', validators=[FileRequired(), FileAllowed(['pdf', 'jpg','png'], 'Image or PDF only!')])
+	profile = FileField('Profile', validators=[FileRequired(), FileAllowed(['jpg', 'png'], 'Images only!')])
+
+	#submit
+
+	declare=StringField("",validators=[DataRequired(),EqualTo('DECLARE')])
+	accept=StringField("",validators=[DataRequired(),EqualTo('ACCEPT')])
 	submit= SubmitField('Submit')
 
 

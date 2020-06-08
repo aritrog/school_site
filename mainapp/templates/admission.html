@@ -120,6 +120,16 @@
         <div class="row">
             <form class="form-layout" method="POST" action="{{url_for('admission')}}">
                 <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Admission form</h1>
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;text-align: center;">Note</h1>
+                    <p style="color: green; font-size: 1rem;font-weight: 500;">
+                        Read the application form thoroughly before filling it up. The application form should be completely filled in. Incomplete form will not be accepted. Write NA if not applicable.
+                    </p>
+                    <p style="color: green; font-size: 1rem;font-weight: 500;
+                    ">
+                        Attested copies of birth/ academic certificate/Mark-sheets/Progress Report muist be attached here with.
+                    </p>
+                </div>
 
                 <div class="form-square">
                     <h1 style="color:  #4068dd ;font-weight: 500;">Student Details</h1>
@@ -130,7 +140,7 @@
                     
                     <div class="form-group" style="width: 40%;float: left;margin-right : 8%;min-width: 200px">
                         {{form.dob.label()}}
-                        {{form.dob(class="form-control")}}
+                        <input type="date" name="dob" class="form-control">
                     </div>
                     <div class="form-group" style="width: 25%;float: left;margin-right : 0;min-width: 200px">
                         {{form.gender.label()}}
@@ -287,61 +297,113 @@
                     </div>
                 </div>
                 <div class="form-square">
-                    <div class="form-group">
-                        {{form.name.label()}}
-                        {{form.name(class="form-control")}}
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Student's Health</h1>
+                    <div class="form-group fltl" style="width: 20%;float: left;margin-right : 3.2rem;min-width: 200px;">
+                        {{form.blgrp.label()}}
+                        {{form.blgrp(class="form-control")}}
                     </div>
-                    <div class="form-group">
-                        {{form.name.label()}}
-                        {{form.name(class="form-control")}}
+                    <div class="form-group fltl" style="width: 20%;float: left;margin-right : 3.2rem;min-width: 200px;">
+                        {{form.teeth.label()}}
+                        {{form.teeth(class="form-control")}}
                     </div>
-                    <div class="form-group">
-                        {{form.name.label()}}
-                        {{form.name(class="form-control")}}
+                    <div class="form-group fltl" style="width: 20%;float: left;margin-right : 3.2rem;min-width: 200px;">
+                        {{form.height.label()}}
+                        {{form.height(class="form-control")}}
                     </div>
-                    <div class="form-group">
-                        {{form.name.label()}}
-                        {{form.name(class="form-control")}}
+                    <div class="form-group fltl" style="width: 20%;float: left;min-width: 200px">
+                        {{form.weight.label()}}
+                        {{form.weight(class="form-control")}}
                     </div>
-                    <div class="form-group">
-                        {{form.name.label()}}
-                        {{form.name(class="form-control")}}
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.illness.label()}}
+                        {{form.illness(class="form-control")}}
                     </div>
+                </div>
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Additional Information</h1>
+                    <div class="form-group" style="width: 100%">
+                        {{form.pschool.label()}}
+                        {{form.pschool(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.reference.label()}}
+                        {{form.reference(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 30%;float: left;margin-right : 2rem;min-width: 200px;">
+                        {{form.caste.label()}}
+                        {{form.caste(class="form-control form-crazy")}} 
+                    </div>
+                    <div class="form-group fltl" style="width: 10%;float: left;margin-right : 0rem;min-width: 200px;">
+                        {{form.mtoungue.label()}}
+                        {{form.mtoungue(class="form-control form-crazy")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 15%;float: left;margin-right : 2rem;min-width: 200px;">
+                        {{form.famincome.label()}}
+                        {{form.famincome(class="form-control form-crazy")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 15%;float: left;min-width: 200px;">
+                        {{form.classval.label()}}
+                        {{form.classval(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.lang.label()}}
+                        {{form.lang(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.xdoc.label()}}
+                        {{form.xdoc(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.odoc.label()}}
+                        {{form.odoc(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.subj.label()}}
+                        {{form.subj(class="form-control")}}
+                    </div>
+                    <div class="form-group fltl" style="width: 100%">
+                        {{form.coa.label()}}
+                        {{form.coa(class="form-control")}}
+                    </div>
+                    
+                </div>
+                <div class="form-square" >
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Uploads</h1>
+                    <div class="form-group fltl" style="width: 48%;float: left;min-width: 250px;">
+                        <label>Upload Document <span style="color: green">[max size = 4kb]</span></label>
+                        <input type="file" name="document" class="form-control-file">
+                        {% for error in form.document.errors %}
+                            <small class="text-danger">{{ error }}</small>  
+                        {% endfor %}
+                    </div>
+                    <div class="form-group fltl" style="width: 48%;float: left;min-width: 250px;">
+                        <label>Profile Image <span style="color: green">[max size = 4kb]</span></label>
+                        <input type="file" name="profile" class="form-control-file">
+                        {% for error in form.profile.errors %}
+                            <small class="text-danger">{{ error }}</small>  
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-square">
+                    <h1 style="color:  #4068dd ;font-weight: 500;">Declaration</h1>
+                    <label>In the given box, write <span style="color: blue">"DECLARE"</span> to declare the following statement</label>
+                    <p style="color: green; font-size: 1rem;font-weight: 500;">
+                        I/We {{form.declare(class=" fixw")}} that the above statements and documents submitted are true and correct to the best of my/our knowledge and belief.
+                    </p>
+                    <br>
+                    <label>In the given box, write <span style="color: blue">"ACCEPT"</span> to accept the following statement</label>
+                    <p style="color: green;font-size: 1rem;font-weight: 500;">
+                        I/My ward {{form.accept(class=" fixw")}} to face expulsion from the institute in case my ward is involved in any malprtactice and misconduct in behaiviour and action.
+                    </p>
+                    {% if form.declare.data=='DECLARE' and form.accept.data=='ACCEPT' %}
+                        {{form.submit(class="submit-btn")}}
+                    {% else  %}
+                        {{form.submit(class="submit-btn disabled")}}
+
+                    {% endif %}    
+
                 </div>
                 
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                <div class="form-group">
-                    {{form.name.label()}}
-                    {{form.name(class="form-control")}}
-                </div>
-                
-
-
-
-
             </form>
     
            </div>
