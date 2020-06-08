@@ -244,7 +244,7 @@
                     <div class="message-box">
                         <h2>Welcome to <span style="color:orange;font-weight: bold">Ambedkar Public School</span></h2>
                         <p>Our objective is to promote and encourage and help in prosecution of studies and advancement of literary, cultural, political, religious, scientific and technical education in the socially and educationally lowest, down-trodden under privileged strata of our society.</p>
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
+                        <a href="{{url_for('about')}}" class="hover-btn-new orange"><span>Learn More</span></a>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 				
@@ -265,7 +265,7 @@
                     <div class="message-box">
                         <h2>Brief biography of <span style="color: orange;font-weight: bold">Dr. B.R.Ambedkar</span></h2>
                         <p>Dr. Bhimrao Ramji Ambedkar (April 14, 1891 - December 6, 1956) was an Indian Jurist, Scholar, Bahujan Political Leader and a Buddhist revivalist, who is the chief architect of the Indian Contitutions. Born in a poor untouchable community, Ambedkar spent his life fighting against the system of Chaturvama and the Indian casts system.</p>
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
+                        <a href="https://en.wikipedia.org/wiki/B._R._Ambedkar" class="hover-btn-new orange"><span>Learn More</span></a>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 				
@@ -618,24 +618,21 @@
     <div class="parallax section dbcolor">
         <div class="container">
             <div class="row logos">
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
+                {% if show_form==True %}
+                  <form class="form-layout" method="POST" action="{{url_for('home')}}">
+                    {{form.hidden_tag()}}
+                    <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our News Letter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
+                  </form>
+                {% else %}
+
+                  <p style="color: black;font-weight: 700;font-size: 2.2rem;text-align: center;">Thank You for subscribing to our Newsletter.</p>
+                  <script>
+                      function myFunction() {
+                        alert("Click the link send to your email account to verify it.");
+                      }
+                    </script>
+                {% endif %}
+
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->

@@ -345,27 +345,25 @@
     <div class="parallax section dbcolor">
         <div class="container">
             <div class="row logos">
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{url_for('static',filename='images/projectimage01.jpg')}}" alt="" class="img-repsonsive"></a>
-                </div>
+                {% if show_form==True %}
+                  <form class="form-layout" method="POST" action="{{url_for('about')}}">
+                    {{form.hidden_tag()}}
+                    <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our News Letter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
+                  </form>
+                {% else %}
+
+                  <p style="color: black;font-weight: 700;font-size: 2.2rem;text-align: center;">Thank You for subscribing to our Newsletter.</p>
+                  <script>
+                      function myFunction() {
+                        alert("Click the link send to your email account to verify it.");
+                      }
+                    </script>
+                {% endif %}
+
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
+
 
     <footer class="footer">
         <div class="container">
