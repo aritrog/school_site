@@ -47,10 +47,21 @@
 	background-color: grey;
 }
 .backim{
-	background-image: url('../images/background1.jpeg');
+	background-color:  #212f3d ;
 
 }
-.bord{
-	border: 2px solid #ebb504 ;
-	width: 10rem;
+.imagebox{
+	align-items: center;
+	justify-content: start;
+	position: relative;
+	border: 6px solid white ;
+	width: 28%;
+	margin:0.8rem;
+	display: inline-block;
+	transition: 0.8s;
+	overflow: auto;
+}
+.imagebox:hover{
+	width: 33%;
+	box-shadow: 0 0 10px yellow;
 }
