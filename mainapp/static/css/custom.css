@@ -46,3 +46,28 @@
 .disabled{
 	background-color: grey;
 }
+.backim{
+	background-color:  #ffffff ;
+
+}
+.imagebox{
+	align-items: center;
+	justify-content: start;
+	position: relative;
+	border: 6px solid white ;
+	width: 42%;
+	margin:0.8rem;
+	display: inline-block;
+	transition: 0.8s;
+	overflow: auto;
+	box-shadow: 0 0 20px black;
+}
+.imagebox:hover{
+	width: 46%;
+	box-shadow: 0 0 10px black;
+}
+.padding{
+
+	margin: auto;
+	padding:5%;
+}
