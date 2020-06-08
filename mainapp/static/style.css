@@ -843,7 +843,7 @@ a img.aligncenter {
     display: block;
     position: relative;
     overflow: hidden;
-    padding: 70px 0;
+    padding: 35px 0;
 }
 
 .noover {
@@ -918,7 +918,24 @@ a img.aligncenter {
 	top: 0px;
 	left: 0px;
     display: block;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
+}
+.first-section2 {
+    position: relative;
+    overflow: hidden;
+    height: 100%; 
+  vertical-align: middle;
+}
+
+.first-section2::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  top: 0px;
+  left: 0px;
+    display: block;
+    background: rgba(0,0,0,0);
 }
 
 .first-section h2 {

@@ -47,10 +47,47 @@
 	background-color: grey;
 }
 .backim{
-	background-image: url('../images/background1.jpeg');
+	background-color:  #ffffff ;
 
 }
-.bord{
-	border: 2px solid #ebb504 ;
-	width: 10rem;
+.imagebox{
+	align-items: center;
+	justify-content: start;
+	position: relative;
+	border: 6px solid white ;
+	width: 42%;
+	margin:0.8rem;
+	display: inline-block;
+	transition: 0.8s;
+	overflow: auto;
+	box-shadow: 0 0 20px black;
+}
+.imagebox:hover{
+	width: 46%;
+	box-shadow: 0 0 10px black;
+}
+.padding{
+
+	margin: auto;
+	padding:5%;
+}
+.specf{
+	background-color: #eea412;
+	border:none;
+	border-bottom: 2px solid black;
+	width: 40%;
+	min-width: 250px;
+	margin: 1rem;
+}
+.btn123{
+	font-size: 1.2rem;
+	font-weight: 600;
+	border:3px solid black;
+	color:black;
+	background-color: #eea412;
+}
+.btn123:hover{
+	color: #eea412;
+	background-color: black;
+	transition: 0.3s;
 }

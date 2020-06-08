@@ -1,6 +1,6 @@
 from flask import url_for,request,render_template,redirect,flash
 from mainapp.cruds import Admissiondb
-from mainapp.forms import AdmissionForm,ContactForm
+from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm
 from mainapp import app
 @app.route('/')
 def home():
@@ -22,7 +22,14 @@ def about():
 
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
-	return render_template('gallery.html')
+	show_form=True
+	form=NewsletterForm(request.form)
+	if form.validate_on_submit():
+		show_form=False
+		print("entered")
+		return render_template('gallery.html',form=form,show_form=show_form)
+	print(form.errors)	
+	return render_template('gallery.html',form=form,show_form=show_form)
 
 @app.route('/course',methods=['GET','POST'])
 def course():
