@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/responsive.css')}}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
    
@@ -111,9 +113,10 @@
 		</nav>
 	</header>
 	<!-- End header -->
-	<section class="gallery-block cards-gallery parallax parallax-off section backim" >
+	<section class="gallery-block cards-gallery parallax parallax-off section backim" style="background-image:url({{url_for('static',filename='images/wooden.jpg')}});">
     <div class="container" >
-      <h1 style="font-family: 'Solway', serif;font-size: 5rem;color: #ffc300 ">Gallery</h1>
+
+      <h1 style="font-family: 'Sofia', serif;font-size: 5rem;color: #ffc300; text-shadow: 2px 2px #ff7b9c; ">Gallery</h1>
       <div class="images" style="margin: 1rem 1rem 1rem 2rem">
         <div class="imagebox">
           <a class="lightbox" href="{{url_for('static',filename='images/projectimage1.JPG')}}"><img src="{{url_for('static',filename='images/projectimage2.JPG')}}" class="card-img-top"></a>
@@ -152,7 +155,7 @@
                 {% if show_form==True %}
                   <form class="form-layout" method="POST" action="{{url_for('gallery')}}">
                     {{form.hidden_tag()}}
-                    <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our News Letter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
+                    <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our Newsletter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
                   </form>
                 {% else %}
 
