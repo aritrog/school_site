@@ -115,28 +115,6 @@
 		</div>
 	  </div>
 	</div>
-	<div class="modal fade" id="login2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		<div class="modal-content" >
-			<div class="modal-header tit-up">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" >Notice Board</h4>
-			</div>
-            <div class="modal-body customer-box" style="background-color: bisque;">
-            <div><p>classes are going to start from june</p></div>
-            <hr>
-            <div><p>classes are going to start from june</p></div>
-            <hr>
-            <div><p>classes are going to start from june</p></div>
-            <hr>
-            <div><p>classes are going to start from june</p></div>
-            <hr>
-                
-				
-			</div>
-		</div>
-	  </div>
-	</div>
 
     <!-- LOADER -->
 	<div id="preloader">
@@ -199,7 +177,7 @@
 										<p class="lead">Managed and organised by <span style="color: moccasin;font-weight: bold;font-family: serif"> INDUS RENAISSANCE FOUNDATION</span></p>
 											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login2"><span>Notice</span>
+											<a href="#" class="hover-btn-new"><span>Read More</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -256,7 +234,7 @@
             <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
                     <h3 style="color: orange">About</h3>
-                    <p class="lead" style="color: black">This school is managed and organised by Indus Ranaissance Foundation</p>
+                    <p class="lead" style="color: black">This school is managed and organised by Indus Renaissance Foundation</p>
                 </div>
             </div><!-- end title -->
         
@@ -505,7 +483,7 @@
 <div class="parallax section dbcolor parallax-off db" style="background-image:url({{url_for('static',filename='images/newsletter.jpg')}})";>        <div class="container">
             <div class="row logos">
                 {% if show_form==True %}
-                  <form class="form-layout" method="POST" action="{{url_for('about')}}">
+                  <form class="form-layout" method="POST" action="{{url_for('home')}}">
                     {{form.hidden_tag()}}
                     <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our Newsletter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
                   </form>
@@ -522,7 +500,7 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
-    
+
 	<footer class="footer">
         <div class="container">
             <div class="row">
