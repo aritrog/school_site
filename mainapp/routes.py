@@ -27,14 +27,26 @@ def contact():
 		print("hi bby")
 		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = [form.email.data])
 		msg.body = """
-						<h2>AMBEDKAR PUBLIC SCHOOL</h2>
-						<p>Thank You for reaching us.<br>We will come back to you with more information</p>
-
-
-
-
-
-
+					<!DOCTYPE html>
+					<html>
+						<head>
+							<title>Hi</title>
+						</head>
+						<body>
+							<div>
+								<h1>AMBEDKAR PUBLIC SCHOOL</h1>
+								<p>
+									Thank You for reaching out to us
+									<br>
+								   	We will be contact you with more information soon.
+									<br>
+									Regards,
+									<br>
+									Team APS.
+								</p>
+							</div>
+						</body>
+					</html>
 				   """		
 		mail.send(msg)
 		flash("Your message has been send to the authorities concern!")
