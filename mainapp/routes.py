@@ -25,8 +25,17 @@ def contact():
 	form=ContactForm(request.form)
 	if form.validate_on_submit():
 		print("hi bby")
-		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = ['aritraghosh084@gmail.com'])
-		msg.body = "This is the email body"
+		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = [form.email.data])
+		msg.body = """
+						<h2>AMBEDKAR PUBLIC SCHOOL</h2>
+						<p>Thank You for reaching us.<br>We will come back to you with more information</p>
+
+
+
+
+
+
+				   """		
 		mail.send(msg)
 		flash("Your message has been send to the authorities concern!")
 		return redirect(url_for('home'))
