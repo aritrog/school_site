@@ -79,18 +79,19 @@ class AdmissionForm(FlaskForm):
 	xdoc=StringField('Xerox Copies of')
 	odoc=StringField('Original copies of')
 	subj=StringField('Subjects opted for *', validators=[DataRequired()])
-	coa=StringField('Wgether applied for change of Date of Birth/ Address ?')
+	coa=StringField('Wether applied for change of Date of Birth/ Address ?')
 
 
 	#uploads
 
-	document = FileField('Document', validators=[FileRequired(), FileAllowed(['pdf', 'jpg','png'], 'Image or PDF only!')])
-	profile = FileField('Profile', validators=[FileRequired(), FileAllowed(['jpg', 'png'], 'Images only!')])
+	document = FileField('Document', validators=[ FileAllowed(['pdf', 'jpg','png'], 'Image or PDF only!')])
+	profile = FileField('Profile', validators=[ FileAllowed(['jpg', 'png'], 'Images only!')])
 
 	#submit
-
-	declare=StringField("",validators=[DataRequired(),EqualTo('DECLARE')])
-	accept=StringField("",validators=[DataRequired(),EqualTo('ACCEPT')])
+	dec='DECLARE'
+	acc='ACCEPT'
+	declare=StringField("",validators=[DataRequired()])
+	accept=StringField("",validators=[DataRequired()])
 	submit= SubmitField('Submit')
 
 

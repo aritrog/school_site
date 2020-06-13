@@ -2,6 +2,7 @@ from flask import url_for,request,render_template,redirect,flash
 from mainapp.cruds import Admissiondb
 from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm
 from mainapp import app
+from mainapp import db
 from mainapp.pdfmaker import pdfgen
 
 
@@ -87,50 +88,130 @@ def admission():
 	pdf=pdfgen()
 	form=AdmissionForm(request.form)
 	if form.validate_on_submit():
-		print(form.data.classval)
-		
-		user = Admissiondb(name=form.username.data,
-						   email=form.email.data, 
-						   dob=form.dob.data,
-						   gender=form.gender.data,
-						   nationality=form.nationality.data,
-						   
-						   fathername =form.fathername.data,
-						   fage=form.fage.data,
-						   fedu=form.fedu.data,
-						   fincome=form.fincome.data,
-						   fphno=form.fphno.data,
+		print(form)
+		if form.chck.data :
+			user = Admissiondb(name=form.name.data,
+							   email=form.email.data, 
+							   dob=form.dob.data,
+							   gender=form.gender.data,
+							   nationality=form.nationality.data,
+							   
+							   fathername =form.fathername.data,
+							   fage=form.fage.data,
+							   fedu=form.fedu.data,
+							   fincome=form.fincome.data,
+							   fphno=form.fphno.data,
 
-						   mathername =form.mothername.data,
-						   mage=form.mage.data,
-						   medu=form.medu.data,
-						   mincome=form.mincome.data,
-						   mphno=form.mphno.data,
+							   mothername =form.mothername.data,
+							   mage=form.mage.data,
+							   medu=form.medu.data,
+							   mincome=form.mincome.data,
+							   mphno=form.mphno.data,
 
-						   guardianname =form.guardianname.data,
-						   gage=form.gage.data,
-						   gedu=form.gedu.data,
-						   gincome=form.gincome.data,
-						   gphno=form.gphno.data,
+							   guardianname =form.guardianname.data,
+							   gage=form.gage.data,
+							   gedu=form.gedu.data,
+							   gincome=form.gincome.data,
+							   gphno=form.gphno.data,
 
-						   hldno=orm.hldno.data,
-						   city=form.city.data,
-						   dist=form.dist.data,
-						   state=form.state.data,
-						   pin=form.pin.data,
-						   ephno=form.ephno.data,
-						   mobile=form.mobile.data,
-						   telphn=form.telphn.data,
+							   hldno=form.hldno.data,
+							   city=form.city.data,
+							   dist=form.dist.data,
+							   state=form.state.data,
+							   pin=form.pin.data,
+							   ephno=form.ephno.data,
+							   mobile=form.mobile.data,
+							   telphn=form.telphn.data,
 
-						   thldno=orm.thldno.data,
-						   tcity=form.tcity.data,
-						   tdist=form.tdist.data,
-						   tstate=form.tstate.data,
-						   tpin=form.tpin.data,
+							   thldno=form.hldno.data,
+							   tcity=form.city.data,
+							   tdist=form.dist.data,
+							   tstate=form.state.data,
+							   tpin=form.pin.data,
 
-						   
+							   caste=form.caste.data,
+							   mtoungue=form.mtoungue.data,
+							   lang=form.lang.data,
 
-						)
+							   blgrp=form.blgrp.data,
+							   teeth=form.teeth.data,
+							   height=form.height.data,
+							   weight=form.weight.data,
+							   illness=form.illness.data,
+
+							   famincome=form.famincome.data,
+
+							   pschool=form.pschool.data,
+							   classval=form.classval.data,
+							   reference=form.reference.data,
+							   xdoc=form.xdoc.data,
+							   odoc=form.odoc.data,
+							   subj=form.subj.data,
+							   coa=form.coa.data,
+
+							)
+
+		else: 	
+			user = Admissiondb(name=form.name.data,
+							   email=form.email.data, 
+							   dob=form.dob.data,
+							   gender=form.gender.data,
+							   nationality=form.nationality.data,
+							   
+							   fathername =form.fathername.data,
+							   fage=form.fage.data,
+							   fedu=form.fedu.data,
+							   fincome=form.fincome.data,
+							   fphno=form.fphno.data,
+
+							   mothername =form.mothername.data,
+							   mage=form.mage.data,
+							   medu=form.medu.data,
+							   mincome=form.mincome.data,
+							   mphno=form.mphno.data,
+
+							   guardianname =form.guardianname.data,
+							   gage=form.gage.data,
+							   gedu=form.gedu.data,
+							   gincome=form.gincome.data,
+							   gphno=form.gphno.data,
+
+							   hldno=form.hldno.data,
+							   city=form.city.data,
+							   dist=form.dist.data,
+							   state=form.state.data,
+							   pin=form.pin.data,
+							   ephno=form.ephno.data,
+							   mobile=form.mobile.data,
+							   telphn=form.telphn.data,
+
+							   thldno=form.thldno.data,
+							   tcity=form.tcity.data,
+							   tdist=form.tdist.data,
+							   tstate=form.tstate.data,
+							   tpin=form.tpin.data,
+
+							   caste=form.caste.data,
+							   mtoungue=form.mtoungue.data,
+							   lang=form.lang.data,
+
+							   blgrp=form.blgrp.data,
+							   teeth=form.teeth.data,
+							   height=form.height.data,
+							   weight=form.weight.data,
+							   illness=form.illness.data,
+
+							   famincome=form.famincome.data,
+
+							   pschool=form.pschool.data,
+							   classval=form.classval.data,
+							   reference=form.reference.data,
+							   xdoc=form.xdoc.data,
+							   odoc=form.odoc.data,
+							   subj=form.subj.data,
+							   coa=form.coa.data,
+
+							)
 		db.session.add(user)
 		db.session.commit()
 		flash(f"{form.name.data} have been registered in our database","success")
