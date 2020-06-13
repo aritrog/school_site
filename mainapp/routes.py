@@ -1,8 +1,10 @@
 from flask import url_for,request,render_template,redirect,flash
+from flask_mail import Mail, Message
 from mainapp.cruds import Admissiondb
 from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm
 from mainapp import app
 from mainapp import db
+from mainapp import mail
 from mainapp.pdfmaker import pdfgen
 
 
@@ -22,7 +24,10 @@ def home():
 def contact():
 	form=ContactForm(request.form)
 	if form.validate_on_submit():
-
+		print("hi bby")
+		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = ['aritraghosh084@gmail.com'])
+		msg.body = "This is the email body"
+		mail.send(msg)
 		flash("Your message has been send to the authorities concern!")
 		return redirect(url_for('home'))
 	return render_template('contact.html',form=form)	
