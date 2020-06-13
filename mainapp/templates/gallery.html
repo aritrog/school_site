@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>SmartEDU - Education Responsive HTML5 Template</title>  
+    <title>Gallery Section</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -87,7 +87,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{{url_for('home')}}">
-                    <img src="{{url_for('static',filename='images/AMBEDKAR.png')}}" alt="" /> 
+                    <img src="{{url_for('static',filename='images/AMBEDKAR.png')}}" alt=""> 
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -149,7 +149,7 @@
     </div>    
   </section>
 
-    <div class="parallax section dbcolor">
+    <div class="parallax section dbcolor parallax-off db" style="background-image:url({{url_for('static',filename='images/newsletter.jpg')}})";>
         <div class="container">
             <div class="row logos">
                 {% if show_form==True %}
@@ -159,7 +159,7 @@
                   </form>
                 {% else %}
 
-                  <p style="color: black;font-weight: 700;font-size: 2.2rem;text-align: center;">Thank You for subscribing to our Newsletter.</p>
+                  <p style="color: black;font-weight: 700;font-size: 1.8rem;text-align: center;">Thank You for subscribing to our Newsletter.</p>
                   <script>
                       function myFunction() {
                         alert("Click the link send to your email account to verify it.");
@@ -230,7 +230,7 @@
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-center">                   
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">Ambedkar Public School</a> Design By : <a href="https://html.design/">FourDevs</a></p>
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">Ambedkar Public School</a> Design By : <a href="https://html.design/">Cosleat Devs</a></p>
                 </div>
             </div>
         </div><!-- end container -->
