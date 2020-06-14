@@ -76,7 +76,7 @@ def contact():
 	if form.validate_on_submit():
 		print("hi query person")
 		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = [form.email.data])
-		msg.body = """
+		msg.html = """
 					<!DOCTYPE html>
 					<html>
 						<head>
