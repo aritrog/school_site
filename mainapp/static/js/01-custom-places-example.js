@@ -6,8 +6,8 @@ function runExample3() {
 			{
 				// flag that this place should have the tooltip shown when the map is first loaded
 				autoShow: true,
-				lat: 53.79,
-				lng:-1.5426760000000286,
+				lat: 22.941878,
+				lng: 88.448142,
 				name: "AMBEDKAR PUBLIC SCHOOL",
 				street: "63 Netaji Subhash Path",
 				userData: 99

@@ -28,7 +28,7 @@
 	$.fn.mapsed = function (options) {
 		// consts
 		// - Centre of the UK (ish ...)
-		var DEFAULT_CENTER = new google.maps.LatLng(53.175148, -1.423908);
+		var DEFAULT_CENTER = new google.maps.LatLng(22.941878, 88.448142);
 		var DEFAULT_ZOOM = 10;
 
 		// private plug-in variables
