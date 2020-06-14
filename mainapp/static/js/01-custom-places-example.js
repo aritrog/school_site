@@ -8,8 +8,8 @@ function runExample3() {
 				autoShow: true,
 				lat: 53.79,
 				lng:-1.5426760000000286,
-				name: "SmartEDU",
-				street: "Over the rainbow, Up high way",
+				name: "AMBEDKAR PUBLIC SCHOOL",
+				street: "63 Netaji Subhash Path",
 				userData: 99
 			}
 
