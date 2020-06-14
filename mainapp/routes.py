@@ -19,7 +19,7 @@ def login():
 
 	user = LogUser.query.filter_by(email=email).first()
 
-	if not user or not user.password==password:
+	if not user or not check_password_hash(user.password,password):
 		flash('Please check you credentials!')
 		return render_template('index.html')
 
@@ -40,17 +40,17 @@ def signup():
         return redirect(url_for('home'))
 
     new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
-
     db.session.add(new_user)
     db.session.commit()
 
+    login_user(new_user)    
     return redirect(url_for('admin'))
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user() 
-    return redirect(url_for('home'))
+    return render_template('index.html')
 
 #<-- DO NOT ENTER -->
 ##

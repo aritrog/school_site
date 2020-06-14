@@ -97,7 +97,7 @@
           					  </div>
        					 {% endif %}
        					 {% endwith %}
-						<form role="form" class="form-horizontal" method="POST" action="/signup">
+						<form role="form" class="form-horizontal" method="POST" action="{{url_for('signup')}}">
 							<div class="form-group">
 								<div class="col-sm-12">
 									<input class="form-control" placeholder="Name" name="name" type="text">
@@ -120,7 +120,7 @@
 							</div>
 							<div class="row">							
 								<div class="col-sm-10">
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
 										Save &amp; Continue
 									</button>
 									
