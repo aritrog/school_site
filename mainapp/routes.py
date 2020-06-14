@@ -6,7 +6,57 @@ from mainapp import app
 from mainapp import db
 from mainapp import mail
 from mainapp.pdfmaker import pdfgen
+from .cruds import LogUser
+from flask_login import login_user, logout_user, login_required
+from werkzeug.security import generate_password_hash, check_password_hash
 
+
+##login and related shit lies here
+@app.route('/login',methods=['GET','POST'])
+def login():
+	email = request.form.get('email')
+	password = request.form.get('password')
+
+	user = LogUser.query.filter_by(email=email).first()
+
+	if not user or not user.password==password:
+		flash('Please check you credentials!')
+		return render_template('index.html')
+
+	login_user(user)
+	return redirect(url_for('admin'))
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    email = request.form.get('email')
+    name = request.form.get('name')
+    mobile = request.form.get('mobile')
+    password = request.form.get('password')
+
+    user = LogUser.query.filter_by(email=email).first()
+
+    if user:
+        flash('Email address already exists')
+        return redirect(url_for('home'))
+
+    new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    return redirect(url_for('admin'))
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user() 
+    return redirect(url_for('home'))
+
+#<-- DO NOT ENTER -->
+##
+@app.route('/admin')
+def admin():
+	return render_template('admin.html')
 
 @app.route('/',methods=['GET','POST'])
 def home():
