@@ -24,7 +24,7 @@ def home():
 def contact():
 	form=ContactForm(request.form)
 	if form.validate_on_submit():
-		print("hi bby")
+		print("hi query person")
 		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = [form.email.data])
 		msg.body = """
 					<!DOCTYPE html>

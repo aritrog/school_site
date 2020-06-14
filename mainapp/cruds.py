@@ -1,5 +1,6 @@
 from datetime import datetime
-from mainapp import db
+from flask_login import UserMixin
+from . import db
 
 
 class Admissiondb(db.Model):
@@ -70,3 +71,9 @@ class Admissiondb(db.Model):
 
 	def __repr__(self):
 		return f"user('{self.name}','{self.email}','{self.phno}','{self.age}','{self.classval}','{self.address}','{self.date}')"	
+
+class LogUser(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(100),nullable=False)
+    name = db.Column(db.String(1000),nullable=False)
