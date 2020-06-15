@@ -55,6 +55,7 @@ def logout():
 #<-- DO NOT ENTER -->
 ##
 @app.route('/admin')
+@login_required
 def admin():
 	return render_template('admin.html')
 
