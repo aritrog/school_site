@@ -189,9 +189,16 @@
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
 					</ul>
+					{% if not current_user.is_authenticated %}
 					<ul class="nav navbar-nav navbar-right">
                         <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Login/Signup</span></a></li>
                     </ul>
+                    {% endif %}
+                    {% if current_user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log" href="{{url_for('logout')}}" data-target="#login"><span>Logout</span></a></li>
+                    </ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>

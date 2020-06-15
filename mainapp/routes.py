@@ -59,6 +59,11 @@ def logout():
 def admin():
 	return render_template('admin.html')
 
+# @app.route('/admin')
+# #@login_required
+# def adminempty():
+# 	return render_template('index.html')
+
 @app.route('/',methods=['GET','POST'])
 def home():
 	show_form=True
