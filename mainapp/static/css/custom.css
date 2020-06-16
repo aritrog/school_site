@@ -92,3 +92,51 @@
 	background-color: black;
 	transition: 0.3s;
 }
+.magazine-container
+{
+    margin-top: 8%;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-bottom: 8%;
+    
+    
+}
+
+.magazine-card 
+{
+    -webkit-box-shadow:-1px 9px 40px -12px rgba(0,0,0.75);
+    
+    box-shadow:-1px 9px 40px -12px rgba(0,0,0.75);
+
+
+}
+.card-img-top
+{
+    border-radius: 20%;
+}
+.magazine-card
+{
+    border-radius:20%;
+    width:400px;
+    height:500px;
+    margin-top:25px ;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+}
+.carousel-item {
+    height: 100vh;
+    background: #212121;
+  }
+  .carousel-item.active,
+ {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.jumbotron jumbotron-fluid
+{
+    -webkit-box-shadow:-1px 9px 40px -12px rgba(0,0,0.75);
+    
+    box-shadow:-1px 9px 40px -12px rgba(0,0,0.75);
+}

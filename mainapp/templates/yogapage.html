@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
 
 	<link rel="stylesheet" href="{{url_for('static',filename='css/newcard.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='css/yogapage.css')}}">
     <!-- Modernizer for Portfolio -->
     <script src="{{url_for('static',filename='js/modernizer.js')}}"></script>
 
@@ -113,18 +114,19 @@
 	<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="width: auto;">
 		<div class="d-flex w-100">
 		  <div class="carousel-item active ">
-			  <img src="images/yogaday.jpg" class="d-block w-100" alt="...">
+			  <img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="d-block w-100" alt="...">
 		  </div>
 		  
 		</div>
 	  </div>
+	</div>
       <div class="magazine-container" >
 		<div class="row row-cols-1 row-cols-md-2">
 			
 			
 			<div class="col mb-6">
 			  <div class="magazine-card" style="background-color: rgba(169, 169, 169, 0.5);" >
-				<img src="images/projectimage1.JPG" class="card-img-top" alt="...">
+				<img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="card-img-top" alt="...">
 				<div class="card-body">
 				  <h5 class="card-title">Card title</h5>
 				  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -133,7 +135,7 @@
 			</div>
 			<div class="col mb-6">
 			  <div class="magazine-card" style="background-color: rgba(169, 169, 169, 0.5);" >
-				<img src="images/projectimage1.JPG" class="card-img-top" alt="...">
+				<img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="card-img-top" alt="...">
 				<div class="card-body">
 				  <h5 class="card-title">Card title</h5>
 				  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -141,45 +143,51 @@
 			  </div>
 			</div>
 		  </div>
-		  <div class="row row-cols-1 row-cols-md-2">
-			<div class="col mb-4 sm-6">
-			  <div class="magazine-card" style="background-color: rgba(169, 169, 169, 0.5);" >
-				<img src="images/projectimage1.JPG" class="card-img-top" alt="...">
-				<div class="card-body">
-				  <h5 class="card-title">Card title</h5>
-				  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col mb-4 sm-6">
-			  <div class="magazine-card" style="background-color:rgba(169, 169, 169, 0.5);" >
-				<img src="images/projectimage1.JPG" class="card-img-top" alt="...">
-				<div class="card-body">
-				  <h5 class="card-title">Card title</h5>
-				  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col mb-4 sm-6">
-			  <div class="magazine-card" style="background-color: rgba(169, 169, 169, 0.5);" >
-				<img src="images/projectimage1.JPG" class="card-img-top" alt="...">
-				<div class="card-body">
-				  <h5 class="card-title">Card title</h5>
-				  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col mb-4 sm-6">
-			  <div class="magazine-card" style="background-color:rgba(169, 169, 169, 0.5);" >
-				<img src="images/projectimage1.JPG" class="card-img-top" alt="...">
-				<div class="card-body">
-				  <h5 class="card-title">Card title</h5>
-				  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				</div>
-			  </div>
+      
+	  <div class="row row-cols-1 row-cols-md-2">
+		<div class="col mb-4 sm-6">
+		  <div class="magazine-card" style="background-color: rgba(169, 169, 169, 0.5);" >
+			<img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Card title</h5>
+			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 			</div>
 		  </div>
-    </div>
+		</div>
+		<div class="col mb-4 sm-6">
+		  <div class="magazine-card" style="background-color:rgba(169, 169, 169, 0.5);" >
+			<img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Card title</h5>
+			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="row row-cols-1 row-cols-md-2">
+		<div class="col mb-4 sm-6">
+		  <div class="magazine-card" style="background-color: rgba(169, 169, 169, 0.5);" >
+			<img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Card title</h5>
+			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+			</div>
+		  </div>
+		</div>
+		<div class="col mb-4 sm-6">
+		  <div class="magazine-card" style="background-color:rgba(169, 169, 169, 0.5);" >
+			<img src="{{url_for('static',filename='images/yogaday.jpg')}}" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Card title</h5>
+			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
+
+    
     <div class="jumbotron jumbotron-fluid" style="height: 600px;background-color: bisque;">
 		<div class="container">
 		  <h1 class="display-2" style="text-align: center;font-family:cursive;">Yoga    is   life</h1>
