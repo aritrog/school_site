@@ -1,0 +1,164 @@
+.
+├── mainapp
+│   ├── admission.db
+│   ├── cruds.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── cruds.cpython-36.pyc
+│   │   ├── cruds.cpython-37.pyc
+│   │   ├── forms.cpython-36.pyc
+│   │   ├── forms.cpython-37.pyc
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── __init__.cpython-37.pyc
+│   │   ├── routes.cpython-36.pyc
+│   │   └── routes.cpython-37.pyc
+│   ├── routes.py
+│   ├── static
+│   │   ├── blog-single.html
+│   │   ├── contact.html
+│   │   ├── contact.php
+│   │   ├── css
+│   │   │   ├── animate.css
+│   │   │   ├── animate.min.css
+│   │   │   ├── bootstrap.min.css
+│   │   │   ├── bootstrap-touch-slider.css
+│   │   │   ├── colors.css
+│   │   │   ├── custom.css
+│   │   │   ├── flaticon.css
+│   │   │   ├── font-awesome.css
+│   │   │   ├── font-awesome.min.css
+│   │   │   ├── owl.carousel.css
+│   │   │   ├── prettyPhoto.css
+│   │   │   ├── pr_loading.css
+│   │   │   ├── responsive.css
+│   │   │   ├── timeline.min.css
+│   │   │   └── versions.css
+│   │   ├── fonts
+│   │   │   ├── Flaticon.eot
+│   │   │   ├── Flaticon.svg
+│   │   │   ├── Flaticon.ttf
+│   │   │   ├── Flaticon.woff
+│   │   │   ├── FontAwesome.otf
+│   │   │   ├── fontawesome-webfont.eot
+│   │   │   ├── fontawesome-webfont.svg
+│   │   │   ├── fontawesome-webfont.ttf
+│   │   │   ├── fontawesome-webfont.woff
+│   │   │   └── fontawesome-webfont.woff2
+│   │   ├── images
+│   │   │   ├── about_02.jpg
+│   │   │   ├── about_03.jpg
+│   │   │   ├── ajax-loader.gif
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── arrow-left.svg
+│   │   │   ├── arrow-right.svg
+│   │   │   ├── author.jpg
+│   │   │   ├── avatar-01.jpg
+│   │   │   ├── avatar-02.jpg
+│   │   │   ├── avatar-03.jpg
+│   │   │   ├── banner.jpg
+│   │   │   ├── bg.png
+│   │   │   ├── blog_1.jpg
+│   │   │   ├── blog_2.jpg
+│   │   │   ├── blog_3.jpg
+│   │   │   ├── blog_4.jpg
+│   │   │   ├── blog_5.jpg
+│   │   │   ├── blog_6.jpg
+│   │   │   ├── blog_single.jpg
+│   │   │   ├── favicon.ico
+│   │   │   ├── img-01.jpg
+│   │   │   ├── img-02.jpg
+│   │   │   ├── img-03.jpg
+│   │   │   ├── img-04.jpg
+│   │   │   ├── logo_01.png
+│   │   │   ├── logo_02.png
+│   │   │   ├── logo_03.png
+│   │   │   ├── logo_04.png
+│   │   │   ├── logo_05.png
+│   │   │   ├── logo_06.png
+│   │   │   ├── logo.png
+│   │   │   ├── parallax_04.jpg
+│   │   │   ├── prettyPhoto
+│   │   │   │   ├── dark_rounded
+│   │   │   │   │   ├── btnNext.png
+│   │   │   │   │   ├── btnPrevious.png
+│   │   │   │   │   ├── contentPattern.png
+│   │   │   │   │   ├── default_thumbnail.gif
+│   │   │   │   │   ├── loader.gif
+│   │   │   │   │   └── sprite.png
+│   │   │   │   ├── dark_square
+│   │   │   │   │   ├── btnNext.png
+│   │   │   │   │   ├── btnPrevious.png
+│   │   │   │   │   ├── contentPattern.png
+│   │   │   │   │   ├── default_thumbnail.gif
+│   │   │   │   │   ├── loader.gif
+│   │   │   │   │   └── sprite.png
+│   │   │   │   ├── default
+│   │   │   │   │   ├── default_thumb.png
+│   │   │   │   │   ├── loader.gif
+│   │   │   │   │   ├── sprite_next.png
+│   │   │   │   │   ├── sprite.png
+│   │   │   │   │   ├── sprite_prev.png
+│   │   │   │   │   ├── sprite_x.png
+│   │   │   │   │   └── sprite_y.png
+│   │   │   │   ├── facebook
+│   │   │   │   │   ├── btnNext.png
+│   │   │   │   │   ├── btnPrevious.png
+│   │   │   │   │   ├── contentPatternBottom.png
+│   │   │   │   │   ├── contentPatternLeft.png
+│   │   │   │   │   ├── contentPatternRight.png
+│   │   │   │   │   ├── contentPatternTop.png
+│   │   │   │   │   ├── default_thumbnail.gif
+│   │   │   │   │   ├── loader.gif
+│   │   │   │   │   └── sprite.png
+│   │   │   │   ├── light_rounded
+│   │   │   │   │   ├── btnNext.png
+│   │   │   │   │   ├── btnPrevious.png
+│   │   │   │   │   ├── default_thumbnail.gif
+│   │   │   │   │   ├── loader.gif
+│   │   │   │   │   └── sprite.png
+│   │   │   │   └── light_square
+│   │   │   │       ├── btnNext.png
+│   │   │   │       ├── btnPrevious.png
+│   │   │   │       ├── default_thumbnail.gif
+│   │   │   │       ├── loader.gif
+│   │   │   │       └── sprite.png
+│   │   │   ├── search-icon.png
+│   │   │   ├── slider-01.jpg
+│   │   │   ├── slider-02.jpg
+│   │   │   ├── slider-03.jpg
+│   │   │   ├── team-01.png
+│   │   │   ├── team-02.png
+│   │   │   ├── team-03.png
+│   │   │   ├── team-04.png
+│   │   │   ├── testi_01.png
+│   │   │   ├── testi_02.png
+│   │   │   ├── testi_03.png
+│   │   │   └── world-map.png
+│   │   ├── js
+│   │   │   ├── 01-custom-places-example.js
+│   │   │   ├── all.js
+│   │   │   ├── custom.js
+│   │   │   ├── mapsed.js
+│   │   │   ├── modernizer.js
+│   │   │   └── timeline.min.js
+│   │   ├── scripts.js
+│   │   └── style.css
+│   └── templates
+│       ├── about.html
+│       ├── admission.html
+│       ├── blog.html
+│       ├── contact.html
+│       ├── course.html
+│       ├── gallery.html
+│       ├── index.html
+│       ├── pricing.html
+│       └── teachers.html
+├── main.py
+├── packagelist.txt
+├── __pycache__
+│   └── admissionform.cpython-37.pyc
+├── README.md
+└── visualize_files.txt
+
+16 directories, 145 files

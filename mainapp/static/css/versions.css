@@ -97,10 +97,9 @@ body.host_version .nav-pills > li > a.active:hover{
 
 
 body.host_version .checkdomain-wrapper .form-group {
+    float: left;
     background: #4babb1;
     padding: 10px;
-    border: 1px solid #e9e9ec;
-    width: 100%;
 }
 
 body.host_version .checkdomain hr {
@@ -224,7 +223,7 @@ body.host_version .effect-1:after {
 
 body.host_version .first-section .effect-1:after,
 body.host_version .stat-wrap .effect-1:after {
-    box-shadow: 0 0 0 2px #fff;
+    box-shadow: 0 0 0 5px #fff;
 }
 
 body.host_version .header_style_01 .navbar-default .navbar-nav > li > a {

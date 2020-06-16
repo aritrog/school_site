@@ -1,2 +1,94 @@
 
 /** ADD YOUR AWESOME CODES HERE **/
+
+.form-square{
+	border: 1px solid black;
+	widows: 100%;
+	padding: 1rem;
+	overflow: auto;
+	margin: 2rem;
+	box-shadow: 0 0 5px blue;
+	border-radius: 9px;
+	font-size: 1.2rem;
+}
+.form-layout{
+	width: 100%;
+	padding: 1rem;
+}
+
+.form-crazy{
+	border: none;
+	padding-left: 1rem;
+}
+.fltl{
+	float:left;
+}
+.all-zero{
+	padding: 0;
+	margin: 0;
+	width: auto;
+}
+.padl{
+	padding-left: 8px;
+	padding-bottom: 2px;
+	color: green;
+}
+.fixw{
+	width: 120px;
+}
+.submit-btn{
+	color:white;
+	width: 100%;
+	height: 3rem;
+	font-weight: 600;
+	font-size: 1.5rem;
+	border-radius: 5px;
+}
+.disabled{
+	background-color: grey;
+}
+.backim{
+	background-color:  #ffffff ;
+
+}
+.imagebox{
+	align-items: center;
+	justify-content: start;
+	position: relative;
+	border: 6px solid white ;
+	width: 42%;
+	margin:0.8rem;
+	display: inline-block;
+	transition: 0.8s;
+	overflow: auto;
+	box-shadow: 0 0 20px black;
+}
+.imagebox:hover{
+	width: 46%;
+	box-shadow: 0 0 10px black;
+}
+.padding{
+
+	margin: auto;
+	padding:5%;
+}
+.specf{
+	background-color: #eea412;
+	border:none;
+	border-bottom: 2px solid black;
+	width: 40%;
+	min-width: 250px;
+	margin: 1rem;
+}
+.btn123{
+	font-size: 1.2rem;
+	font-weight: 600;
+	border:3px solid black;
+	color:black;
+	background-color: #eea412;
+}
+.btn123:hover{
+	color: #eea412;
+	background-color: black;
+	transition: 0.3s;
+}

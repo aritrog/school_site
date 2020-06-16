@@ -1,0 +1,5 @@
+Chnages that need to be addressed: 
+
+1: Ambedkar Public School Font on first page carousel needs to be changed for a better one.
+
+2: Gallery page photo needs to be worked on. Need a center alignment for the pictures which are in a contrasting ratio to the others.

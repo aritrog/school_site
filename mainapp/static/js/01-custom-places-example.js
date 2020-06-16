@@ -6,10 +6,10 @@ function runExample3() {
 			{
 				// flag that this place should have the tooltip shown when the map is first loaded
 				autoShow: true,
-				lat: 53.79,
-				lng:-1.5426760000000286,
-				name: "SmartEDU",
-				street: "Over the rainbow, Up high way",
+				lat: 22.941765,
+				lng: 88.447893,
+				name: "AMBEDKAR PUBLIC SCHOOL",
+				street: "63 Netaji Subhash Path",
 				userData: 99
 			}
 

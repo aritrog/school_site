@@ -843,7 +843,7 @@ a img.aligncenter {
     display: block;
     position: relative;
     overflow: hidden;
-    padding: 70px 0;
+    padding: 35px 0;
 }
 
 .noover {
@@ -918,7 +918,24 @@ a img.aligncenter {
 	top: 0px;
 	left: 0px;
     display: block;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
+}
+.first-section2 {
+    position: relative;
+    overflow: hidden;
+    height: 100%; 
+  vertical-align: middle;
+}
+
+.first-section2::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  top: 0px;
+  left: 0px;
+    display: block;
+    background: rgba(0,0,0,0);
 }
 
 .first-section h2 {
@@ -2845,7 +2862,7 @@ body.host_version .first-section .effect-1.slide-btn::after{
 /**-------------- inner Page css ---------------**/
 
 .all-title-box{
-	background: url(images/banner.jpg)no-repeat;
+	background: url(images/aboutusheader.webp)no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -2858,8 +2875,8 @@ body.host_version .first-section .effect-1.slide-btn::after{
 	color: #fff;
 	font-weight: 600;
 	text-transform: capitalize;
-	padding-top: 11%;
-	font-size: 48px;
+	padding-top: 6%;
+	font-size: 5rem;
 	line-height: 0px;
 }
 
