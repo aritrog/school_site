@@ -7,6 +7,7 @@ from mainapp import db
 from mainapp import mail
 from mainapp.pdfmaker import pdfgen
 from .cruds import LogUser
+from .cruds import MailRecords
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -73,13 +74,16 @@ def home():
 		show_form=False
 		email=form.email.data
 		user = MailRecords.query.filter_by(email=email).first()
+		print("printing mail records")
+		print(MailRecords.query.all())
 		if user:
-	        flash('Email address already exists')
-	        return render_template('index.html',form=form,show_form=show_form)
+			flash('Email address already exists')
+			return render_template('index.html',form=form,show_form=show_form)
 
 		new_email=MailRecords(email=email)
 		db.session.add(new_email)
 		db.session.commit()
+
 		return render_template('index.html',form=form,show_form=show_form)
 	print(form.errors)	
 	return render_template('index.html',form=form,show_form=show_form)
