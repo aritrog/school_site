@@ -71,7 +71,15 @@ def home():
 	form=NewsletterForm(request.form)
 	if form.validate_on_submit():
 		show_form=False
-		print("entered")
+		email=form.email.data
+		user = MailRecords.query.filter_by(email=email).first()
+		if user:
+	        flash('Email address already exists')
+	        return render_template('index.html',form=form,show_form=show_form)
+
+		new_email=MailRecords(email=email)
+		db.session.add(new_email)
+		db.session.commit()
 		return render_template('index.html',form=form,show_form=show_form)
 	print(form.errors)	
 	return render_template('index.html',form=form,show_form=show_form)

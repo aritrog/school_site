@@ -79,3 +79,6 @@ class LogUser(UserMixin, db.Model):
 	password = db.Column(db.String(100),nullable=False)
 	mobile = db.Column(db.String(10),nullable=False)
 	name = db.Column(db.String(1000),nullable=False)
+
+class MailRecords(db.Model):
+	email = db.Column(db.String(100), unique=True)	
