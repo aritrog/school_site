@@ -165,6 +165,10 @@ def teachers():
 	print(form.errors)	
 	return render_template('teachers.html',form=form,show_form=show_form)
 
+@app.route('/yoga')
+def yoga():
+	return render_template('yogapage.html')
+
 @app.route('/admission', methods=['GET','POST'])
 def admission():
 	pdf=pdfgen()
