@@ -97,7 +97,7 @@
           					  </div>
        					 {% endif %}
        					 {% endwith %}
-						<form role="form" class="form-horizontal" method="POST" action="/signup">
+						<form role="form" class="form-horizontal" method="POST" action="{{url_for('signup')}}">
 							<div class="form-group">
 								<div class="col-sm-12">
 									<input class="form-control" placeholder="Name" name="name" type="text">
@@ -188,10 +188,20 @@
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('teachers') }}">Teachers</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
+						{% if current_user.is_authenticated %}
+						<li class="nav-item "><a class="nav-link" href="{{url_for('admin')}}">Admin</a></li>
+						{% endif %}
 					</ul>
+					{% if not current_user.is_authenticated %}
 					<ul class="nav navbar-nav navbar-right">
                         <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Login/Signup</span></a></li>
                     </ul>
+                    {% endif %}
+                    {% if current_user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log" href="{{url_for('logout')}}" data-target="#login"><span>Logout</span></a></li>
+                    </ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>

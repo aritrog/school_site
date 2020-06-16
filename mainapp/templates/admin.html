@@ -170,7 +170,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About Us</a></li>
 						<li class="nav-item "><a class="nav-link" href="{{ url_for('course') }}" >Courses</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
@@ -178,10 +178,15 @@
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('teachers') }}">Teachers</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
+						{% if current_user.is_authenticated %}
+						<li class="nav-item active"><a class="nav-link" href="{{url_for('admin')}}">Admin</a></li>
+						{% endif %}
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log" href="{{url_for('logout')}}">Logout</span></a></li>
+					{% if current_user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log" href="{{url_for('logout')}}" data-target="#login"><span>Logout</span></a></li>
                     </ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>
