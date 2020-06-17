@@ -3,6 +3,11 @@ from flask_login import UserMixin
 from . import db
 
 
+class MailRecords(db.Model):
+	__bind_key__ = 'newsletter'
+	id = db.Column(db.Integer, primary_key=True)
+	email = db.Column(db.String(100), unique=True)	
+
 class Admissiondb(db.Model):
 	pid = db.Column(db.Integer,primary_key=True)
 	name = db.Column(db.String(100),nullable=False)
@@ -79,3 +84,4 @@ class LogUser(UserMixin, db.Model):
 	password = db.Column(db.String(100),nullable=False)
 	mobile = db.Column(db.String(10),nullable=False)
 	name = db.Column(db.String(1000),nullable=False)
+

@@ -7,6 +7,7 @@ from mainapp import db
 from mainapp import mail
 from mainapp.pdfmaker import pdfgen
 from .cruds import LogUser
+from .cruds import MailRecords
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -42,6 +43,7 @@ def signup():
     new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
     db.session.add(new_user)
     db.session.commit()
+    login_user(new_user)
 
     login_user(new_user)    
     return redirect(url_for('admin'))
@@ -70,7 +72,18 @@ def home():
 	form=NewsletterForm(request.form)
 	if form.validate_on_submit():
 		show_form=False
-		print("entered")
+		email=form.email.data
+		user = MailRecords.query.filter_by(email=email).first()
+		print("printing mail records")
+		print(MailRecords.query.all())
+		if user:
+			flash('Email address already exists')
+			return render_template('index.html',form=form,show_form=show_form)
+
+		new_email=MailRecords(email=email)
+		db.session.add(new_email)
+		db.session.commit()
+
 		return render_template('index.html',form=form,show_form=show_form)
 	print(form.errors)	
 	return render_template('index.html',form=form,show_form=show_form)
