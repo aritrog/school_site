@@ -10,6 +10,8 @@ from .cruds import LogUser
 from .cruds import MailRecords
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
+from PIL import Image
+import os
 
 
 ##login and related shit lies here

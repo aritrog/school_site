@@ -1,8 +1,11 @@
- 
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from flask_mail import Mail, Message
 from flask_login import LoginManager
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
 
 #init main
 app=Flask(__name__)
@@ -18,6 +21,20 @@ db.init_app(app)
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
 login_manager.init_app(app)
+
+
+
+# from .cruds import LogUser
+# class AdminModelView(ModelView):
+#     def is_accessible(self):
+#         return current_user.is_authenticated and not current_user.is_anonymous
+
+# admin = Admin(app, name='coolapi', template_mode='bootstrap3')
+# app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
+# admin.add_view(AdminModelView(LogUser, db.session))
+
+
+
 
 from .cruds import LogUser
 @login_manager.user_loader

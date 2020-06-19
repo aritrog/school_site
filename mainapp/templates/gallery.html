@@ -151,6 +151,17 @@
     </div>    
   </section>
 
+  <hr>
+{% if current_user.is_authenticated %}
+<div>
+    <form action="/edit" method="POST">
+        <input type="file" name="gallerypic" id="photo"/>
+        <button type="submit" >Submit</button>
+    </form>
+
+  </div>   
+{% endif %}
+
     <div class="parallax section dbcolor parallax-off db" style="background-image:url({{url_for('static',filename='images/newsletter.jpg')}})";>
         <div class="container">
             <div class="row logos">
