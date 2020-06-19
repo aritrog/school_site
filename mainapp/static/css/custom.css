@@ -154,3 +154,7 @@
 	border: 1px solid rgba(0,0,0,.125);
 	box-shadow: -1px 9px 40px -12px rgba(0,0,0.75);
 }
+.postcard{
+	margin:2rem 2rem 2rem 2rem;
+	display: inline-block;
+}

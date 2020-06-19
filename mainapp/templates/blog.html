@@ -117,13 +117,13 @@
 	</div>
 	<div class="container contact-form" style="padding:0;overflow:auto;min-width:440px;width:50%;display: flex;align-content: center;">
     
-
-            <div class=" form-square schoolmagazine-card card-style" style="margin:2rem 2rem 2rem 2rem;min-width: 300px;max-width: 700px;display: inline-block;">
+			{% for post in posts %}
+            <div class=" form-square schoolmagazine-card card-style postcard">
 				<div class="card-body">
-					<h1 style="color:  #4068dd ;font-weight: 500;">Title</h1>
-				  <p class="card-text" style="font-size: 0.9rem">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+					<h1 style="color:  #4068dd ;font-weight: 500;">{{post.title}}</h1>
+				  <p class="card-text" style="font-size: 0.9rem">{{post.content}}</p>
 				</div>
-				<img src="{{url_for('static',filename='images/projectimage9.JPG')}}" class="card-img-top" alt="..." style=" border-radius: 0%;height: 300px;">
+				<img src="{{post.pic_name}}" class="card-img-top" alt="..." style=" border-radius: 0%;height: 300px;">
 				<div class="card-body">
 				  
 				  
@@ -133,6 +133,7 @@
 				  </button>
 				</div>
 			  </div>
+			{% endfor %}  
 
     </div>
 <footer class="footer">
