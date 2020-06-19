@@ -33,25 +33,20 @@ def login():
 
 @app.route('/signup', methods=['POST'])
 def signup():
-    email = request.form.get('email')
-    name = request.form.get('name')
-    mobile = request.form.get('mobile')
-    password = request.form.get('password')
-
-    user = LogUser.query.filter_by(email=email).first()
-
-    if user:
-        flash('Email address already exists')
-        return redirect(url_for('home'))
-
-    new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
-    db.session.add(new_user)
-    db.session.commit()
-    login_user(new_user)
-
-    login_user(new_user)    
-    return redirect(url_for('admin'))
-
+	email = request.form.get('email')
+	name = request.form.get('name')
+	mobile = request.form.get('mobile')
+	password = request.form.get('password')
+	user = LogUser.query.filter_by(email=email).first()
+	if user:
+		flash('Email address already exists')
+		return redirect(url_for('home'))
+	new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
+	db.session.add(new_user)
+	db.session.commit()
+	login_user(new_user)
+	return redirect(url_for('admin'))
+	
 @app.route('/logout')
 @login_required
 def logout():
@@ -70,20 +65,14 @@ def admin():
 
 
 
-# from werkzeug.utils import secure_filename
-# @app.route('/edit',methods=['GET','POST'])
-# @login_required
-# def edit():
-# 	target = os.path.join(app_root,'static/images')
-# 	if not os.path.isdir(target):
-# 		os.mkdir(target)
-# 	if request.method == 'POST':
-# 		file_name = ''
-# 		for file in request.form['gallerypic']:
-# 			file_name = file.filename
-# 			destination = '/'.join([target, file_name])
-# 			file.save(destination)
-#         return render_template('gallery.html')
+from werkzeug.utils import secure_filename
+@app.route('/edit',methods=['GET','POST'])
+@login_required
+def edit():
+	if request.method == 'POST':
+		f = request.files['file']
+		f.save(secure_filename(f.filename))
+		return 'file uploaded successfully'
 
 
 

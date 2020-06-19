@@ -154,8 +154,8 @@
   <hr>
 {% if current_user.is_authenticated %}
 <div>
-    <form action="/edit" method="POST">
-        <input type="file" name="gallerypic"/>
+    <form action="http://localhost:5000/edit" method="POST">
+        <input type="file" name="file" />
         <input type="submit" />
     </form>
 
