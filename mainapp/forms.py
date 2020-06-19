@@ -107,3 +107,8 @@ class ContactForm(FlaskForm):
 class NewsletterForm(FlaskForm):
 	email = StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email"})
 	submit= SubmitField('Subscribe')
+
+class SendMail(FlaskForm):
+	sub=StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email Subject"})
+	mess=StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
+	submit= SubmitField('Subscribe')

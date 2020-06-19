@@ -194,32 +194,32 @@
 	<!-- End header -->	
 
 
-<div class="section-title text-center">
-                <h3>Testimonials</h3>
-                <p>KYA AAPKE TOOTHPASTE MEIN NAMAK HAIN? </p>
-            </div><!-- end title -->
+	<div class="section-title text-center">
+                <h1>Admin</h1>
+    </div><!-- end title -->
+
+    <div class="container">
+    	<div class="row">
+    		<div class="form-square">
+    			<div class="form-group">
+	    			<h1 style="color:  #4068dd ;font-weight: 500;">Mail</h1>
+	    			<form class="form-layout" method="POST" action="{{url_for('sendmail')}}">
+	    				{{form.hidden_tag()}}
+	    				{{form.sub.label()}}
+	                    {{form.sub(class="form-control")}}
+	                    {{form.mess.label()}}
+	                    {{form.mess(class="form-control")}}
+	                    {{form.submit(class="submit-btn")}}
+	    			</form>
+    			</div>
+    		</div>
+    		
+    	</div>
+
+    </div>
 
 
-<div class="parallax section dbcolor parallax-off db" style="background-image:url({{url_for('static',filename='images/newsletter.jpg')}})";>        <div class="container">
-            <div class="row logos">
-                {% if show_form==True %}
-                  <form class="form-layout" method="POST" action="{{url_for('home')}}">
-                    {{form.hidden_tag()}}
-                    <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our Newsletter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
-                  </form>
-                {% else %}
 
-                  <p style="color: black;font-weight: 700;font-size: 1.8rem;text-align: center;">Thank You for subscribing to our Newsletter.</p>
-                  <script>
-                      function myFunction() {
-                        alert("Click the link send to your email account to verify it.");
-                      }
-                    </script>
-                {% endif %}
-
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
     
 	<footer class="footer">
         <div class="container">
