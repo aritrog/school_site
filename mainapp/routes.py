@@ -78,7 +78,6 @@ def blog():
 	posts=Post.query.all()
 	print("entered")
 	print(posts)
-
 	return render_template('blog.html', posts=posts)
 
 @app.route('/sendmail', methods=['GET','POST'])
