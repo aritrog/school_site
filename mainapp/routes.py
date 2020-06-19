@@ -10,7 +10,7 @@ from mainapp import db
 from mainapp import mail
 from mainapp.pdfmaker import pdfgen
 from .cruds import LogUser
-from .cruds import MailRecords
+from .cruds import MailRecords,Post
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
@@ -87,9 +87,13 @@ def admin():
 
 
 
-@app.route('/magazine',methods=['GET','POST'])
-def magazine():
-	return render_template('schoolmagazine.html')
+@app.route('/blog',methods=['GET','POST'])
+def blog():
+	posts=Post.query.all()
+	print("entered")
+	print(posts)
+
+	return render_template('blog.html', posts=posts)
 
 @app.route('/sendmail', methods=['GET','POST'])
 def sendmail():
@@ -200,16 +204,7 @@ def course():
 	print(form.errors)	
 	return render_template('course.html',form=form,show_form=show_form)
 
-@app.route('/blog',methods=['GET','POST'])
-def blog():
-	show_form=True
-	form=NewsletterForm(request.form)
-	if form.validate_on_submit():
-		show_form=False
-		print("entered")
-		return render_template('blog.html',form=form,show_form=show_form)
-	print(form.errors)	
-	return render_template('blog.html',form=form,show_form=show_form)
+
 
 @app.route('/teachers',methods=['GET','POST'])
 def teachers():
@@ -369,7 +364,7 @@ def save_picture(form_picture):
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
 
-    output_size = (125, 125)
+    output_size = (640, 480)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
     i.save(picture_path)
@@ -382,13 +377,14 @@ def createpost():
 		if form.validate_on_submit():
 			if form.pic.data:
 				pic_n=save_picture(form.pic.data)
-				post=Post(title=form.title.data,content=form.content.data,pic_name=pic_n)
+				picn='../static/postimg'+pic_n
+				post=Post(title=form.title.data,content=form.content.data,pic_name=picn)
 			else:	
 				post=Post(title=form.title.data,content=form.content.data)
 			db.session.add(post)
 			db.session.commit()
 			flash("Your post has been created")
-			return redirect(url_for('admin'))
+			return redirect(url_for('home'))
 
 		flash("form not submitted")
 		return redirect(url_for('admin'))	

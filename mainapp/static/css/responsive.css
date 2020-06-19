@@ -95,6 +95,9 @@
 	.blog-post-single{
 		margin-bottom: 30px;
 	}
+	.postcard{
+		width: 700px;
+	}
 }
 @media (max-width: 767px) {
 	.top-navbar .navbar-light .navbar-nav .nav-item{
@@ -223,6 +226,9 @@
 	}
 	.blog-item{
 		margin-bottom: 30px;
+	}
+	.postcard{
+		width: 600px;
 	}
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
@@ -357,6 +363,9 @@
 	}
 	.inner-hmv{
 		margin-bottom: 30px;
+	}
+	.postcard{
+		width: 400px;
 	}
 	
 }
