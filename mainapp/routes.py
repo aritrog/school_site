@@ -13,7 +13,6 @@ from .cruds import LogUser
 from .cruds import MailRecords
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from PIL import Image
 import os
 
 
@@ -61,17 +60,32 @@ def logout():
 
 #<-- DO NOT ENTER -->
 ##
-@app.route('/admin',methods=['GET','Post'])
+@app.route('/admin',methods=['GET','POST'])
 @login_required
 def admin():
 	form=SendMail(request.form)
 	form2=PostForm(request.form)
 	return render_template('admin.html',form=form,form2=form2)
 
-# @app.route('/admin')
-# #@login_required
-# def adminempty():
-# 	return render_template('index.html')
+
+
+
+# from werkzeug.utils import secure_filename
+# @app.route('/edit',methods=['GET','POST'])
+# @login_required
+# def edit():
+# 	target = os.path.join(app_root,'static/images')
+# 	if not os.path.isdir(target):
+# 		os.mkdir(target)
+# 	if request.method == 'POST':
+# 		file_name = ''
+# 		for file in request.form['gallerypic']:
+# 			file_name = file.filename
+# 			destination = '/'.join([target, file_name])
+# 			file.save(destination)
+#         return render_template('gallery.html')
+
+
 
 @app.route('/magazine',methods=['GET','POST'])
 def magazine():
