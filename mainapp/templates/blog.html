@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
     <!-- Basic -->
@@ -9,17 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>School Magazine</title>  
+    <title>APS -Magazinepage </title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Site Icons -->
- 	<link rel="shortcut icon" href="{{url_for('static',filename='images/logo.png')}}" />
+	<link rel="shortcut icon" href="{{url_for('static',filename='images/logo.png')}}" />
     <link rel="apple-touch-icon" href="{{url_for('static',filename='images/logo.png')}}">
+
     <!-- Bootstrap CSS -->
-<link rel="shortcut icon" href="{{url_for('static',filename='images/favicon.ico')}}" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="{{url_for('static',filename='images/apple-touch-icon.png')}}">
+<link rel="shortcut icon" href="{{url_for('static',filename='images/logo.png')}}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{{url_for('static',filename='images/logo.png')}}}">
 
     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
     <!-- Site CSS -->
@@ -31,8 +31,12 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
 
+	<link rel="stylesheet" href="{{url_for('static',filename='css/newcard.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='css/yogapage.css')}}">
     <!-- Modernizer for Portfolio -->
     <script src="{{url_for('static',filename='js/modernizer.js')}}"></script>
+
+    
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -40,31 +44,23 @@
     <![endif]-->
 
 </head>
-<body class="host_version"> 
+<body class="host_version" style="background-color: white" > 
 
 	<!-- Modal -->
 	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		  <div class="modal-content" >
-			  <div class="modal-header tit-up">
-				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				  <h4 class="modal-title" >Notice Board</h4>
-			  </div>
-			  <div class="modal-body customer-box" style="background-color: bisque;">
-			  <div><p>classes are going to start from june</p></div>
-			  <hr>
-			  <div><p>classes are going to start from june</p></div>
-			  <hr>
-			  <div><p>classes are going to start from june</p></div>
-			  <hr>
-			  <div><p>classes are going to start from june</p></div>
-			  <hr>
-				  
-				  
-			  </div>
-		  </div>
-		</div>
-	  </div>
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content" >
+              <div class="modal-header tit-up">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" >Notice Board</h4>
+              </div>
+              <div class="modal-body customer-box" style="background-color: bisque;">
+              <div><p>World Yoga Day evvent Launched. Click <a href="{{url_for('yoga')}}">here.</a></p></div>
+              <hr>               
+              </div>
+          </div>
+        </div>
+      </div>
 
     <!-- LOADER -->
 	<div id="preloader">
@@ -81,7 +77,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{{url_for('home')}}">
-                    <img src="{{url_for('static',filename='images/AMBEDKAR.png')}}" alt="" />
+					<img src="{{url_for('static',filename='images/AMBEDKAR.png')}}" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -90,260 +86,110 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item "><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About Us</a></li>
 						<li class="nav-item "><a class="nav-link" href="{{ url_for('course') }}" >Courses</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
-
-						<li class="nav-item active"><a class="nav-link" href="{{ url_for('blog') }}">Magazine </a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ url_for('blog') }}">Magazine</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('teachers') }}">Teachers</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
 						{% if current_user.is_authenticated %}
-						<li class="nav-item "><a class="nav-link" href="{{url_for('admin')}}">Admin</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{{url_for('admin')}}">Admin</a></li>
 						{% endif %}
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Notice</span></a></li>
+					{% if current_user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log" href="{{url_for('logout')}}" data-target="#login"><span>Logout</span></a></li>
                     </ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>
 	</header>
+
 	<!-- End header -->
-	
-	<div class="all-title-box " >
+
+    <div class="all-title-box" >
 		<div class="container text-center">
-			<h1>Blog<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+			<h1>School Post<span class="m_1">A record of schol activities.</span></h1>
 		</div>
 	</div>
-	
-    <div id="overviews" class="section wb parallax parallax-off section db" style="background-image:url({{url_for('static',filename='images/blog-background.png')}})";>
-        <div class="container">
-            <div class="section-title row text-center">
-                <div class="col-md-8 offset-md-2">
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
-                </div>
-            </div><!-- end title -->
+	<div class="container contact-form" style="padding:0;overflow:auto;min-width:440px;width:50%;display: flex;align-content: center;">
+    
 
-            <hr class="invis"> 
+            <div class=" form-square schoolmagazine-card card-style" style="margin:2rem 2rem 2rem 2rem;min-width: 300px;max-width: 700px;display: inline-block;">
+				<div class="card-body">
+					<h1 style="color:  #4068dd ;font-weight: 500;">Title</h1>
+				  <p class="card-text" style="font-size: 0.9rem">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				</div>
+				<img src="{{url_for('static',filename='images/projectimage9.JPG')}}" class="card-img-top" alt="..." style=" border-radius: 0%;height: 300px;">
+				<div class="card-body">
+				  
+				  
+				  <p class="card-text" style="float:right"><small class="text-muted">Last updated 3 mins ago</small></p>
+				  <button type="button" class="btn btn-primary" style="width: 70px">👍
+				  	<center><p class="" style="float:left;margin-left: 1rem;"><div class="text-muted">1000</div></p></center>
+				  </button>
+				</div>
+			  </div>
 
-            <div class="row"> 
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="images/blog_1.jpg" alt="" class="img-fluid">
-						</div>
-						<div class="meta-info-blog">
-							<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-                            <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-                            <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-						</div>
-						<div class="blog-title">
-							<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
-						</div>
-						<div class="blog-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-						</div>
-						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More<span></a>
-						</div>
+    </div>
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-xs-12">
+				<div class="widget clearfix">
+					<div class="widget-title">
+						<h3>About US</h3>
 					</div>
-                </div><!-- end col -->
-
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="images/blog_2.jpg" alt="" class="img-fluid">
-						</div>
-						<div class="meta-info-blog">
-							<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-                            <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-                            <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-						</div>
-						<div class="blog-title">
-							<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
-						</div>
-						<div class="blog-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-						</div>
-						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More</span></a>
-						</div>
+					<p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+					<div class="footer-right">
+						<ul class="footer-links-soi">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						</ul><!-- end links -->
 					</div>
-                </div><!-- end col -->
+				</div><!-- end clearfix -->
+			</div><!-- end col -->
 
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="images/blog_3.jpg" alt="" class="img-fluid">
-						</div>
-						<div class="meta-info-blog">
-							<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-                            <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-                            <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-						</div>
-						<div class="blog-title">
-							<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
-						</div>
-						<div class="blog-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-						</div>
-						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More</span></a>
-						</div>
+			<div class="col-lg-4 col-md-4 col-xs-12">
+				<div class="widget clearfix">
+					<div class="widget-title">
+						<h3>Information Link</h3>
 					</div>
-                </div><!-- end col -->
-            </div><!-- end row -->
-
-            <hr class="hr3"> 
-
-            <div class="row"> 
-                <div class="col-lg-4 col-md-6 col-12">
-                   <div class="blog-item">
-						<div class="image-blog">
-							<img src="images/blog_4.jpg" alt="" class="img-fluid">
-						</div>
-						<div class="meta-info-blog">
-							<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-                            <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-                            <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-						</div>
-						<div class="blog-title">
-							<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
-						</div>
-						<div class="blog-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-						</div>
-						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More</span></a>
-						</div>
+					<ul class="footer-links">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Pricing</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul><!-- end links -->
+				</div><!-- end clearfix -->
+			</div><!-- end col -->
+			
+			<div class="col-lg-4 col-md-4 col-xs-12">
+				<div class="widget clearfix">
+					<div class="widget-title">
+						<h3>Contact Details</h3>
 					</div>
-                </div><!-- end col -->
 
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="images/blog_5.jpg" alt="" class="img-fluid">
-						</div>
-						<div class="meta-info-blog">
-							<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-                            <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-                            <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-						</div>
-						<div class="blog-title">
-							<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
-						</div>
-						<div class="blog-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-						</div>
-						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More</span></a>
-						</div>
-					</div>
-                </div><!-- end col -->
-
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="images/blog_6.jpg" alt="" class="img-fluid">
-						</div>
-						<div class="meta-info-blog">
-							<span><i class="fa fa-calendar"></i> <a href="#">May 11, 2015</a> </span>
-                            <span><i class="fa fa-tag"></i>  <a href="#">News</a> </span>
-                            <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-						</div>
-						<div class="blog-title">
-							<h2><a href="#" title="">perferendis doloribus asperiores.</a></h2>
-						</div>
-						<div class="blog-desc">
-							<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
-						</div>
-						<div class="blog-button">
-							<a class="hover-btn-new orange" href="#"><span>Read More</span></a>
-						</div>
-					</div>
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-
-<div class="parallax section dbcolor parallax-off db" style="background-image:url({{url_for('static',filename='images/newsletter.jpg')}})";>        <div class="container">
-            <div class="row logos">
-                {% if show_form==True %}
-                  <form class="form-layout" method="POST" action="{{url_for('blog')}}">
-                    {{form.hidden_tag()}}
-                    <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our Newsletter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
-                  </form>
-                {% else %}
-
-                  <p style="color: black;font-weight: 700;font-size: 1.8rem;text-align: center;">Thank You for subscribing to our Newsletter.</p>
-                  <script>
-                      function myFunction() {
-                        alert("Click the link send to your email account to verify it.");
-                      }
-                    </script>
-                {% endif %}
-
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>About Us</h3>
-                        </div>
-                        <p> Our objective is to promote and encourage and help in prosecution of studies and advancement of literary, cultural, political, religious, scientific and technical education in the socially and educationally lowest, down-trodden under privileged strata of our society.</p>
-                        <div class="footer-right">
-							<ul class="footer-links-soi">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-github"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul><!-- end links -->
-						</div>
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-
-				<div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Information Link</h3>
-                        </div>
-                        <ul class="footer-links">
-                            <li><a href="{{url_for('home')}}">Home</a></li>
-                            <li><a href="{{url_for('about')}}">About</a></li>
-                            <li><a href="{{url_for('blog')}}">Magazine</a></li>
-							<li><a href="{{url_for('admission')}}">Admissions</a></li>
-							<li><a href="{{url_for('contact')}}">Contact</a></li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-				
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Contact Details</h3>
-                        </div>
-
-                        <ul class="footer-links">
-                            <li><a href="mailto:#">info@yoursite.com</a></li>
-                            <li><a href="#">www.yoursite.com</a></li>
-                            <li>Netaji Subhas Path, Kanchrapara Loco, Kanchrapara, West Bengal 743145</li>
-                            <li>+91 9191919191</li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </footer><!-- end footer -->
-
-    <div class="copyrights">
+					<ul class="footer-links">
+						<li><a href="mailto:#">info@yoursite.com</a></li>
+						<li><a href="#">www.yoursite.com</a></li>
+						<li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
+						<li>+61 3 8376 6284</li>
+					</ul><!-- end links -->
+				</div><!-- end clearfix -->
+			</div><!-- end col -->
+			
+		</div><!-- end row -->
+	</div><!-- end container -->
+</footer>
+<div class="copyrights">
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-center">                   
@@ -352,13 +198,19 @@
             </div>
         </div><!-- end container -->
     </div><!-- end copyrights -->
+    
 
+    
+            
+
+    
+    
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
     <!-- ALL JS FILES -->
-    <script src="{{ url_for('static', filename='js/all.js')}} "></script>
+    <script src="{{url_for('static',filename='js/all.js')}}"></script>
     <!-- ALL PLUGINS -->
-    <script src="{{ url_for('static', filename='js/custom.js')}} "></script>
+    <script src="{{url_for('static',filename='js/custom.js')}}"></script>
 
 </body>
 </html>

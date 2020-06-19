@@ -1,7 +1,10 @@
-from flask import url_for,request,render_template,redirect,flash
+import os
+import secrets
+from PIL import Image
+from flask import url_for,request,render_template,redirect,flash,send_file
 from flask_mail import Mail, Message
 from mainapp.cruds import Admissiondb
-from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm
+from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail,PostForm
 from mainapp import app
 from mainapp import db
 from mainapp import mail
@@ -58,15 +61,37 @@ def logout():
 
 #<-- DO NOT ENTER -->
 ##
-@app.route('/admin')
+@app.route('/admin',methods=['GET','Post'])
 @login_required
 def admin():
-	return render_template('admin.html')
+	form=SendMail(request.form)
+	form2=PostForm(request.form)
+	return render_template('admin.html',form=form,form2=form2)
 
 # @app.route('/admin')
 # #@login_required
 # def adminempty():
 # 	return render_template('index.html')
+
+@app.route('/magazine',methods=['GET','POST'])
+def magazine():
+	return render_template('schoolmagazine.html')
+
+@app.route('/sendmail', methods=['GET','POST'])
+def sendmail():
+	form=SendMail(request.form)
+	if form.validate_on_submit():
+
+		mails=MailRecords.query.filter(MailRecords.email.endswith('.com')).all()
+		print("printing",mails.id)
+		msg = Message(form.sub.data, sender = 'apskanchraparawebsite@gmail.com', recipients = ['beyondquestions@gmail.com'])
+		msg.html=render_template('mail.html',text=form.mess.data)
+		#for mail in mails:
+			#msg.add_recipient(mail.email)
+		mail.send(msg)
+		flash("Your message has been send to the authorities concern!")
+	return render_template('admin.html',form=form)	
+			
 
 @app.route('/',methods=['GET','POST'])
 def home():
@@ -125,6 +150,9 @@ def contact():
 	return render_template('contact.html',form=form)	
 
 
+@app.route('/get_logo')
+def get_logo():
+	return send_file('static/images/logo.png',mimetype='image/png')
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
 	show_form=True
@@ -319,3 +347,34 @@ def admission():
 		return redirect(url_for('home'))
 	print(form.errors)	
 	return render_template('admission.html', form=form)
+
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
+
+    output_size = (125, 125)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
+
+@app.route('/createpost',methods=['GET','POST'])
+def createpost():
+		form=PostForm(request.form)
+		if form.validate_on_submit():
+			if form.pic.data:
+				pic_n=save_picture(form.pic.data)
+				post=Post(title=form.title.data,content=form.content.data,pic_name=pic_n)
+			else:	
+				post=Post(title=form.title.data,content=form.content.data)
+			db.session.add(post)
+			db.session.commit()
+			flash("Your post has been created")
+			return redirect(url_for('admin'))
+
+		flash("form not submitted")
+		return redirect(url_for('admin'))	

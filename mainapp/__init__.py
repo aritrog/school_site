@@ -12,7 +12,8 @@ app=Flask(__name__)
 app.config['SECRET_KEY']='edtgbaebaethetrshertsh'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///admission.db'
 app.config['SQLALCHEMY_BINDS']={'login': 'sqlite:///login.db',
-								'newsletter' : 'sqlite:///newsletter.db'}
+								'newsletter' : 'sqlite:///newsletter.db',
+								'posts': 'sqlite:///posts.db'}
 
 db=SQLAlchemy(app)
 db.init_app(app)

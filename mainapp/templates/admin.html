@@ -192,14 +192,56 @@
 		</nav>
 	</header>
 	<!-- End header -->	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Admin<span class="m_1">Website Control Center</span></h1>
+		</div>
+	</div>
+    <div class="container contact-form">
+        <hr>
+    
+        <div class="row">
+            <form class="form-layout" method="POST" action="{{url_for('sendmail')}}">
+                {{form.hidden_tag()}}
+                <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">MailList</h1>
+                
 
+                <div class="form-square">
+                    <div class="form-group">
+	    			<h1 style="color:  #4068dd ;font-weight: 500;">Mail</h1>
+	    				{{form.hidden_tag()}}
+	    				{{form.sub.label()}}
+	                    {{form.sub(class="form-control")}}
+	                    {{form.mess.label()}}
+	                    {{form.mess(class="form-control")}}
+	                    {{form.submit(class="btn")}}
+    				</div>
+                </div>                    
+            </form>
+        </div>
+        <div class="row">
+            <form class="form-layout" method="POST" action="{{url_for('createpost')}}">
+                {{form.hidden_tag()}}
+                <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Magazine Post</h1>
+                
 
-<div class="section-title text-center">
-                <h3>Testimonials</h3>
-                <p>KYA AAPKE TOOTHPASTE MEIN NAMAK HAIN? </p>
-            </div><!-- end title -->
-
-
+                <div class="form-square">
+                    <div class="form-group">
+	    			<h1 style="color:  #4068dd ;font-weight: 500;">Post</h1>
+	    				{{form2.hidden_tag()}}
+	    				{{form2.title.label()}}
+	                    {{form2.title(class="form-control")}}
+	                    {{form2.content.label()}}
+	                    {{form2.content(class="form-control")}}
+	                    {{form2.pic.label()}}
+	                    {{form2.pic(class="form-control")}}
+	                    <br>
+	                    {{form2.submit(class="btn")}}
+    				</div>
+                </div>                    
+            </form>
+        </div>
+    </div>
 
 	<footer class="footer">
         <div class="container">
