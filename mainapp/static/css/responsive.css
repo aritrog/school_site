@@ -7,6 +7,9 @@
 	.top-navbar .navbar-light .navbar-nav .nav-item{
 		margin: 0px 5px;
 	}
+	.postcard{
+		width: 750px;
+	}
 }
 @media (min-width: 768px) and (max-width: 991px) {
 	.top-navbar .navbar-light .navbar-nav .nav-item{
