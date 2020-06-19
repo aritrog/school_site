@@ -76,10 +76,12 @@ def sendmail():
 	form=SendMail(request.form)
 	if form.validate_on_submit():
 
-		mails=MailRecords.query.with_entities(MailRecords.email)
-		print(mails)
-		msg = Message(form.sub.data, sender = 'apskanchraparawebsite@gmail.com', recipients = ['aritraghosh084@gmail.com'])
+		mails=MailRecords.query.filter(MailRecords.email.endswith('.com')).all()
+		print("printing",mails.id)
+		msg = Message(form.sub.data, sender = 'apskanchraparawebsite@gmail.com', recipients = ['beyondquestions@gmail.com'])
 		msg.html=render_template('mail.html',text=form.mess.data)
+		#for mail in mails:
+			#msg.add_recipient(mail.email)
 		mail.send(msg)
 		flash("Your message has been send to the authorities concern!")
 	return render_template('admin.html',form=form)	
