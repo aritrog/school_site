@@ -157,4 +157,6 @@
 .postcard{
 	margin:2rem 2rem 2rem 2rem;
 	display: inline-block;
+	min-width: 370px;
+	width: 80%;
 }

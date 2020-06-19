@@ -118,21 +118,24 @@
 	<div class="container contact-form" style="padding:0;overflow:auto;min-width:440px;width:50%;display: flex;align-content: center;">
     
 			{% for post in posts %}
-            <div class=" form-square schoolmagazine-card card-style postcard">
-				<div class="card-body">
-					<h1 style="color:  #4068dd ;font-weight: 500;">{{post.title}}</h1>
-				  <p class="card-text" style="font-size: 0.9rem">{{post.content}}</p>
+				<div class="row1" style="width: 100%">
+					<div class=" form-square schoolmagazine-card card-style postcard">
+					<div class="card-body">
+						<h1 style="color:  #4068dd ;font-weight: 500;">{{post.title}}</h1>
+					  <p class="card-text" style="font-size: 0.9rem">{{post.content}}</p>
+					</div>
+					<img src="{{post.pic_name}}" class="card-img-top" alt="..." style=" border-radius: 0%;height: 300px;">
+					<div class="card-body">
+					  
+					  
+					  <p class="card-text" style="float:right"><small class="text-muted">Last updated 3 mins ago</small></p>
+					  <button type="button" class="btn btn-primary" style="width: 70px">👍
+					  	<center><p class="" style="float:left;margin-left: 1rem;"><div class="text-muted">1000</div></p></center>
+					  </button>
+					</div>
+				  </div>
 				</div>
-				<img src="{{post.pic_name}}" class="card-img-top" alt="..." style=" border-radius: 0%;height: 300px;">
-				<div class="card-body">
-				  
-				  
-				  <p class="card-text" style="float:right"><small class="text-muted">Last updated 3 mins ago</small></p>
-				  <button type="button" class="btn btn-primary" style="width: 70px">👍
-				  	<center><p class="" style="float:left;margin-left: 1rem;"><div class="text-muted">1000</div></p></center>
-				  </button>
-				</div>
-			  </div>
+	            
 			{% endfor %}  
 
     </div>
