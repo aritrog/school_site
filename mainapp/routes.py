@@ -1,7 +1,7 @@
-from flask import url_for,request,render_template,redirect,flash
+from flask import url_for,request,render_template,redirect,flash,send_file
 from flask_mail import Mail, Message
 from mainapp.cruds import Admissiondb
-from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm
+from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail
 from mainapp import app
 from mainapp import db
 from mainapp import mail
@@ -59,12 +59,31 @@ def logout():
 @app.route('/admin')
 @login_required
 def admin():
-	return render_template('admin.html')
+	form=SendMail(request.form)
+	return render_template('admin.html',form=form)
 
 # @app.route('/admin')
 # #@login_required
 # def adminempty():
 # 	return render_template('index.html')
+
+@app.route('/magazine',methods=['GET','POST'])
+def magazine():
+	return render_template('schoolmagazine.html')
+
+@app.route('/sendmail', methods=['GET','POST'])
+def sendmail():
+	form=SendMail(request.form)
+	if form.validate_on_submit():
+
+		mails=MailRecords.query.with_entities(MailRecords.email)
+		print(mails)
+		msg = Message(form.sub.data, sender = 'apskanchraparawebsite@gmail.com', recipients = ['aritraghosh084@gmail.com'])
+		msg.html=render_template('mail.html',text=form.mess.data)
+		mail.send(msg)
+		flash("Your message has been send to the authorities concern!")
+	return render_template('admin.html',form=form)	
+			
 
 @app.route('/',methods=['GET','POST'])
 def home():
@@ -123,6 +142,9 @@ def contact():
 	return render_template('contact.html',form=form)	
 
 
+@app.route('/get_logo')
+def get_logo():
+	return send_file('static/images/logo.png',mimetype='image/png')
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
 	show_form=True
