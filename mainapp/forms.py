@@ -109,6 +109,6 @@ class NewsletterForm(FlaskForm):
 	submit= SubmitField('Subscribe')
 
 class SendMail(FlaskForm):
-	sub=StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email Subject"})
-	mess=StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
+	sub=StringField('Subjects*',validators=[DataRequired()],render_kw={"placeholder": "Email Subject"})
+	mess=TextField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
 	submit= SubmitField('Subscribe')

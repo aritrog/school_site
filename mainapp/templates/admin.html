@@ -192,35 +192,34 @@
 		</nav>
 	</header>
 	<!-- End header -->	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Admin<span class="m_1">Website Control Center</span></h1>
+		</div>
+	</div>
+    <div class="container contact-form">
+        <hr>
+    
+        <div class="row">
+            <form class="form-layout" method="POST" action="{{url_for('sendmail')}}">
+                {{form.hidden_tag()}}
+                <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">MailList</h1>
+                
 
-
-	<div class="section-title text-center">
-                <h1>Admin</h1>
-    </div><!-- end title -->
-
-    <div class="container">
-    	<div class="row">
-    		<div class="form-square">
-    			<div class="form-group">
+                <div class="form-square">
+                    <div class="form-group">
 	    			<h1 style="color:  #4068dd ;font-weight: 500;">Mail</h1>
-	    			<form class="form-layout" method="POST" action="{{url_for('sendmail')}}">
 	    				{{form.hidden_tag()}}
 	    				{{form.sub.label()}}
 	                    {{form.sub(class="form-control")}}
 	                    {{form.mess.label()}}
 	                    {{form.mess(class="form-control")}}
-	                    {{form.submit(class="submit-btn")}}
-	    			</form>
-    			</div>
-    		</div>
-    		
-    	</div>
-
+	                    {{form.submit(class="btn")}}
+    				</div>
+                </div>                    
+            </form>
+        </div>
     </div>
-
-
-
-    
 	<footer class="footer">
         <div class="container">
             <div class="row">
