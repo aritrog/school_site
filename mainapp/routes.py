@@ -1,7 +1,10 @@
+import os
+import secrets
+from PIL import Image
 from flask import url_for,request,render_template,redirect,flash,send_file
 from flask_mail import Mail, Message
 from mainapp.cruds import Admissiondb
-from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail
+from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail,PostForm
 from mainapp import app
 from mainapp import db
 from mainapp import mail
@@ -56,11 +59,12 @@ def logout():
 
 #<-- DO NOT ENTER -->
 ##
-@app.route('/admin')
+@app.route('/admin',methods=['GET','Post'])
 @login_required
 def admin():
 	form=SendMail(request.form)
-	return render_template('admin.html',form=form)
+	form2=PostForm(request.form)
+	return render_template('admin.html',form=form,form2=form2)
 
 # @app.route('/admin')
 # #@login_required
@@ -341,3 +345,34 @@ def admission():
 		return redirect(url_for('home'))
 	print(form.errors)	
 	return render_template('admission.html', form=form)
+
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
+
+    output_size = (125, 125)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
+
+@app.route('/createpost',methods=['GET','POST'])
+def createpost():
+		form=PostForm(request.form)
+		if form.validate_on_submit():
+			if form.pic.data:
+				pic_n=save_picture(form.pic.data)
+				post=Post(title=form.title.data,content=form.content.data,pic_name=pic_n)
+			else:	
+				post=Post(title=form.title.data,content=form.content.data)
+			db.session.add(post)
+			db.session.commit()
+			flash("Your post has been created")
+			return redirect(url_for('admin'))
+
+		flash("form not submitted")
+		return redirect(url_for('admin'))	

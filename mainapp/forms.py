@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField,SelectField,SubmitField,TextField,DateField,RadioField,BooleanField
+from wtforms import StringField,IntegerField,SelectField,SubmitField,TextAreaField,DateField,RadioField,BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 
@@ -101,7 +101,7 @@ class ContactForm(FlaskForm):
 	lname = StringField('Name*',validators=[DataRequired(),Length(min=2,max=20)],render_kw={"placeholder": "Last Name"})
 	email = StringField('Email*',validators=[DataRequired()],render_kw={"placeholder": "Email"})
 	phno = StringField('Phone no*',validators=[DataRequired(),Length(min=10,max=10)],render_kw={"placeholder": "Phone No."})
-	message= TextField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
+	message= TextAreaField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
 	submit= SubmitField('Submit your query')
 
 class NewsletterForm(FlaskForm):
@@ -110,5 +110,11 @@ class NewsletterForm(FlaskForm):
 
 class SendMail(FlaskForm):
 	sub=StringField('Subjects*',validators=[DataRequired()],render_kw={"placeholder": "Email Subject"})
-	mess=TextField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
+	mess=TextAreaField('Message*',validators=[DataRequired()],render_kw={"placeholder": "Message"})
 	submit= SubmitField('Subscribe')
+
+class PostForm(FlaskForm):
+	title=StringField('Title',validators=[DataRequired()])
+	content=TextAreaField('Content',validators=[DataRequired()])
+	pic=FileField('Picture', validators=[ FileAllowed(['jpg', 'png'], 'Images only!')])
+	submit=SubmitField('Post')
