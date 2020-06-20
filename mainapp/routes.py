@@ -85,9 +85,22 @@ from werkzeug.utils import secure_filename
 @login_required
 def edit():
 	if request.method == 'POST':
-		f = request.files['file']
-		f.save(secure_filename(f.filename))
-		return 'file uploaded successfully'
+		image = Image.open(request.files['file'])
+		i=request.form.get('spot')
+		filename, extension = os.path.splitext(request.files['file'].filename)
+		name='projectimage'+i
+		image.save(r'/home/dspace/Desktop/6thsem/school_site/mainapp/static/images/%s.jpg' % name)
+		return redirect(url_for('gallery'))
+		# i=request.form.get('spot')
+		# f = request.files['file']
+		# filename, extension = os.path.splitext(f.filename)
+		# #i='0'
+		# if int(i)<10:
+		# 	f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename('projectimage'+'0'+i+extension)))
+		# else:
+		# 	f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename('projectimage'+i+extension)))
+		# flash('file uploaded successfully')
+		# return redirect(url_for('gallery'))
 
 
 
