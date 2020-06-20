@@ -376,22 +376,11 @@ def save_picture(form_picture):
 
 	return picture_fn
 
-@app.route('/createpost',methods=['GET','POST'])
-def createpost():
-		form=PostForm(request.form)
-		if form.validate_on_submit():
-			print('in validate')
-			if form.pic.data:
-				print('uploading')
-				pic_n=save_picture(form.pic.data)
-				picn='../static/postimg'+pic_n
-				post=Post(title=form.title.data,content=form.content.data,pic_name=picn)
-			else:	
-				post=Post(title=form.title.data,content=form.content.data)
-			db.session.add(post)
-			db.session.commit()
-			flash("Your post has been created")
-			return redirect(url_for('home'))
-
-		flash("form not submitted")
-		return redirect(url_for('admin'))	
+@app.route("/post/<int:post_id>/delete", methods=['GET','POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('blog'))
