@@ -26,15 +26,6 @@ login_manager.init_app(app)
 
 
 
-# from .cruds import LogUser
-# class AdminModelView(ModelView):
-#     def is_accessible(self):
-#         return current_user.is_authenticated and not current_user.is_anonymous
-
-# admin = Admin(app, name='coolapi', template_mode='bootstrap3')
-# app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
-# admin.add_view(AdminModelView(LogUser, db.session))
-
 
 
 
