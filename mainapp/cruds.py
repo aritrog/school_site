@@ -94,5 +94,5 @@ class Post(db.Model):
 	pic_name=db.Column(db.String(100))
 
 	def __repr__(self):
-		return f"Post('{self.title}', '{self.date_posted}')"
+		return f"Post('{self.title}', '{self.date_posted}','{self.pic_name}')"
 

@@ -66,6 +66,19 @@ def logout():
 def admin():
 	form=SendMail(request.form)
 	form2=PostForm(request.form)
+	if form2.validate_on_submit():
+			print('in validate')
+			if form2.pic.data:
+				print('uploading')
+				pic_n=save_picture(form2.pic.data)
+				picn='../static/postimg'+pic_n
+				post=Post(title=form2.title.data,content=form2.content.data,pic_name=picn)
+			else:	
+				post=Post(title=form2.title.data,content=form2.content.data)
+			db.session.add(post)
+			db.session.commit()
+			flash("Your post has been created")
+			return redirect(url_for('home'))
 	return render_template('admin.html',form=form,form2=form2)
 
 # @app.route('/admin')
@@ -344,23 +357,27 @@ def admission():
 
 
 def save_picture(form_picture):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
+	print('in save pic')
+	random_hex = secrets.token_hex(8)
+	_, f_ext = os.path.splitext(form_picture.filename)
+	picture_fn = random_hex + f_ext
+	print(picture_fn)
+	picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
+	print(picture_path)
+	output_size = (640, 480)
+	i = Image.open(form_picture)
+	i.thumbnail(output_size)
+	i.save(picture_path)
 
-    output_size = (640, 480)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
-
-    return picture_fn
+	return picture_fn
 
 @app.route('/createpost',methods=['GET','POST'])
 def createpost():
 		form=PostForm(request.form)
 		if form.validate_on_submit():
+			print('in validate')
 			if form.pic.data:
+				print('uploading')
 				pic_n=save_picture(form.pic.data)
 				picn='../static/postimg'+pic_n
 				post=Post(title=form.title.data,content=form.content.data,pic_name=picn)

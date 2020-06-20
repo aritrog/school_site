@@ -200,7 +200,7 @@
         <hr>
     
         <div class="row">
-            <form class="form-layout" method="POST" action="{{url_for('sendmail')}}">
+            <form class="form-layout" method="POST" action="{{url_for('sendmail')}}" >
                 {{form.hidden_tag()}}
                 <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">MailList</h1>
                 
@@ -219,7 +219,7 @@
             </form>
         </div>
         <div class="row">
-            <form class="form-layout" method="POST" action="{{url_for('createpost')}}">
+            <form class="form-layout" method="POST" action="" enctype="multipart/form-data">
                 {{form.hidden_tag()}}
                 <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Magazine Post</h1>
                 
@@ -234,6 +234,11 @@
 	                    {{form2.content(class="form-control")}}
 	                    {{form2.pic.label()}}
 	                    {{form2.pic(class="form-control")}}
+	                    {% if form2.pic.errors %}
+                        {% for error in form.pic.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    	{% endif %}
 	                    <br>
 	                    {{form2.submit(class="btn")}}
     				</div>

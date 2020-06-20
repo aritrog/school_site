@@ -116,5 +116,5 @@ class SendMail(FlaskForm):
 class PostForm(FlaskForm):
 	title=StringField('Title',validators=[DataRequired()])
 	content=TextAreaField('Content',validators=[DataRequired()])
-	pic=FileField('Picture', validators=[ FileAllowed(['jpg', 'png'], 'Images only!')])
+	pic=FileField('Picture', validators=[FileAllowed(['jpg', 'png'])])
 	submit=SubmitField('Post')
