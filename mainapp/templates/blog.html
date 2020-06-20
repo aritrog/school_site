@@ -111,7 +111,7 @@
 
     <div class="all-title-box" >
 		<div class="container text-center">
-			<h1>School Post<span class="m_1">A record of schol activities.</span></h1>
+			<h1>School Post<span class="m_1">A record of school activities.</span></h1>
 		</div>
 	</div>
 	<div class="container contact-form" style="padding:0;overflow:auto;min-width:440px;width:50%;display: flex;align-content: center;">
@@ -146,7 +146,7 @@
 					<div class="widget-title">
 						<h3>About US</h3>
 					</div>
-					<p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+					<p> We are an English Medium Co-Educational School following the CBSE curriculum and providing education from classes Nursury to X</p>
 					<div class="footer-right">
 						<ul class="footer-links-soi">
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -165,11 +165,12 @@
 						<h3>Information Link</h3>
 					</div>
 					<ul class="footer-links">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Pricing</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="{{ url_for('home') }}">Home</a></li>
+						<li><a href="{{ url_for('blog') }}">Magazine</a></li>
+						<li><a href="{{ url_for('admission') }}">Admission</a></li>
+						<li><a href="{{ url_for('about') }}">About</a></li>
+						
+						<li><a href="{{ url_for('contact') }}">Contact</a></li>
 					</ul><!-- end links -->
 				</div><!-- end clearfix -->
 			</div><!-- end col -->
