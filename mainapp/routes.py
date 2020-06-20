@@ -89,7 +89,7 @@ def edit():
 		i=request.form.get('spot')
 		filename, extension = os.path.splitext(request.files['file'].filename)
 		name='projectimage'+i
-		image.save(r'/home/dspace/Desktop/6thsem/school_site/mainapp/static/images/%s.jpg' % name)
+		image.save(r'/root/school_site/mainapp/static/images' % name)
 		return redirect(url_for('gallery'))
 		# i=request.form.get('spot')
 		# f = request.files['file']

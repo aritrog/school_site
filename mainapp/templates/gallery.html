@@ -143,8 +143,9 @@
     </div>    
   </section>
 
-  <hr>
+  
 {% if current_user.is_authenticated %}
+<hr>
 <div>
     <form action="/edit" method="POST" enctype="multipart/form-data">
         <input type="file" name="file" />
