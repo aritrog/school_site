@@ -6,7 +6,7 @@ from flask_login import LoginManager
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
-
+UPLOAD_FOLDER = '/home/dspace/Desktop/6thsem/school_site/mainapp/static/images'
 #init main
 app=Flask(__name__)
 app.config['SECRET_KEY']='edtgbaebaethetrshertsh'
@@ -14,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///admission.db'
 app.config['SQLALCHEMY_BINDS']={'login': 'sqlite:///login.db',
 								'newsletter' : 'sqlite:///newsletter.db',
 								'posts': 'sqlite:///posts.db'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db=SQLAlchemy(app)
 db.init_app(app)
