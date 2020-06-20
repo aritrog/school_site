@@ -153,9 +153,9 @@
   <hr>
 {% if current_user.is_authenticated %}
 <div>
-    <form action="/edit" method="POST">
-        <input type="file" name="gallerypic" id="photo"/>
-        <button type="submit" >Submit</button>
+    <form action="/edit" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" />
     </form>
 
   </div>   

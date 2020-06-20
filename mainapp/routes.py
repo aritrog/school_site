@@ -13,7 +13,6 @@ from .cruds import LogUser
 from .cruds import MailRecords,Post
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from PIL import Image
 import os
 
 
@@ -34,25 +33,20 @@ def login():
 
 @app.route('/signup', methods=['POST'])
 def signup():
-    email = request.form.get('email')
-    name = request.form.get('name')
-    mobile = request.form.get('mobile')
-    password = request.form.get('password')
-
-    user = LogUser.query.filter_by(email=email).first()
-
-    if user:
-        flash('Email address already exists')
-        return redirect(url_for('home'))
-
-    new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
-    db.session.add(new_user)
-    db.session.commit()
-    login_user(new_user)
-
-    login_user(new_user)    
-    return redirect(url_for('admin'))
-
+	email = request.form.get('email')
+	name = request.form.get('name')
+	mobile = request.form.get('mobile')
+	password = request.form.get('password')
+	user = LogUser.query.filter_by(email=email).first()
+	if user:
+		flash('Email address already exists')
+		return redirect(url_for('home'))
+	new_user = LogUser(email=email,  password=generate_password_hash(password, method='sha256'), mobile=mobile, name=name)
+	db.session.add(new_user)
+	db.session.commit()
+	login_user(new_user)
+	return redirect(url_for('admin'))
+	
 @app.route('/logout')
 @login_required
 def logout():
@@ -61,17 +55,19 @@ def logout():
 
 #<-- DO NOT ENTER -->
 ##
-@app.route('/admin',methods=['GET','Post'])
+@app.route('/admin',methods=['GET','POST'])
 @login_required
 def admin():
 	form=SendMail(request.form)
 	form2=PostForm(request.form)
 	if form2.validate_on_submit():
 			print('in validate')
-			if form2.pic.data:
+			print(form2.pic.errors)
+			f = request.files['pic']
+			if f:
 				print('uploading')
-				pic_n=save_picture(form2.pic.data)
-				picn='../static/postimg'+pic_n
+				pic_n=save_picture(f)
+				picn='../static/postimg/'+pic_n
 				post=Post(title=form2.title.data,content=form2.content.data,pic_name=picn)
 			else:	
 				post=Post(title=form2.title.data,content=form2.content.data)
@@ -81,10 +77,19 @@ def admin():
 			return redirect(url_for('home'))
 	return render_template('admin.html',form=form,form2=form2)
 
-# @app.route('/admin')
-# #@login_required
-# def adminempty():
-# 	return render_template('index.html')
+
+
+
+from werkzeug.utils import secure_filename
+@app.route('/edit',methods=['GET','POST'])
+@login_required
+def edit():
+	if request.method == 'POST':
+		f = request.files['file']
+		f.save(secure_filename(f.filename))
+		return 'file uploaded successfully'
+
+
 
 @app.route('/blog',methods=['GET','POST'])
 def blog():
