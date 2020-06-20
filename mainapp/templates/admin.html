@@ -175,7 +175,6 @@
 						<li class="nav-item "><a class="nav-link" href="{{ url_for('course') }}" >Courses</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('blog') }}">Magazine</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url_for('teachers') }}">Teachers</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
 						{% if current_user.is_authenticated %}
@@ -201,7 +200,7 @@
         <hr>
     
         <div class="row">
-            <form class="form-layout" method="POST" action="{{url_for('sendmail')}}">
+            <form class="form-layout" method="POST" action="{{url_for('sendmail')}}" >
                 {{form.hidden_tag()}}
                 <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">MailList</h1>
                 
@@ -219,7 +218,35 @@
                 </div>                    
             </form>
         </div>
+        <div class="row">
+            <form class="form-layout" method="POST" action="" enctype="multipart/form-data">
+                {{form2.hidden_tag()}}
+                <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Magazine Post</h1>
+                
+
+                <div class="form-square">
+                    <div class="form-group">
+	    			<h1 style="color:  #4068dd ;font-weight: 500;">Post</h1>
+	    				{{form2.hidden_tag()}}
+	    				{{form2.title.label()}}
+	                    {{form2.title(class="form-control")}}
+	                    {{form2.content.label()}}
+	                    {{form2.content(class="form-control")}}
+	                    {{form2.pic.label()}}
+	                    {{form2.pic(class="form-control")}}
+	                    {% if form2.pic.errors %}
+                        {% for error in form.pic.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    	{% endif %}
+	                    <br>
+	                    {{form2.submit(class="btn")}}
+    				</div>
+                </div>                    
+            </form>
+        </div>
     </div>
+
 	<footer class="footer">
         <div class="container">
             <div class="row">

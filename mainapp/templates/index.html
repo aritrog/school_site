@@ -46,7 +46,7 @@
 		<div class="modal-content">
 			<div class="modal-header tit-up">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Admin Login</h4>
+				<h2 class="modal-title">Admin Login</h2>
 			</div>
 			<div class="modal-body customer-box">
 				<!-- Nav tabs -->
@@ -68,12 +68,12 @@
 						<form role="form" class="form-horizontal" method="POST" action="/login">
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="email1" name="email" placeholder="Your Email ID" type="email">
+									<input class="form-control" id="email1" name="email" placeholder="Your Email ID" type="email" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" type="password">
+									<input class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" type="password" required>
 								</div>
 							</div>
 							<div class="row">
@@ -101,22 +101,22 @@
 						<form role="form" class="form-horizontal" method="POST" action="{{url_for('signup')}}">
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" placeholder="Name" name="name" type="text">
+									<input class="form-control" placeholder="Name" name="name" type="text" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="email" name="email" placeholder="Email" type="email">
+									<input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="mobile" name="mobile" placeholder="Mobile" type="text">
+									<input class="form-control" id="mobile" name="mobile" placeholder="Mobile" type="text" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="password" placeholder="Password" name="password" type="password">
+									<input class="form-control" id="password" placeholder="Password" name="password" type="password" required>
 								</div>
 							</div>
 							<div class="row">							
@@ -186,7 +186,6 @@
 						<li class="nav-item "><a class="nav-link" href="{{ url_for('course') }}" >Courses</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('blog') }}">Magazine</a></li>
-						<li class="nav-item"><a class="nav-link" href="{{ url_for('teachers') }}">Teachers</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
 						{% if current_user.is_authenticated %}
@@ -406,7 +405,8 @@
 										<li>Viswakarma</li>
 										<li>Mahalaya</li>
 									</ul>
-									<span style="color: orange;font-weight: bold">Test/Exams</span><br>Half-Yearly Examination
+									<span style="color: orange;font-weight: bold">Test/Exams</span><br>
+									<span style="color: white">Half-Yearly Examination</span>
 								</p>
 							</div>
 						</div>
@@ -607,6 +607,16 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </footer><!-- end footer -->
+
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">                   
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">Ambedkar Public School</a> Design By : <a href="https://html.design/">Cosleat Devs</a></p>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 

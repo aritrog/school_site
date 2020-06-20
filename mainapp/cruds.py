@@ -85,3 +85,14 @@ class LogUser(UserMixin, db.Model):
 	mobile = db.Column(db.String(10),nullable=False)
 	name = db.Column(db.String(1000),nullable=False)
 
+class Post(db.Model):
+	__bind_key__ = 'posts'
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(100), nullable=False)
+	date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+	content = db.Column(db.Text, nullable=False)	
+	pic_name=db.Column(db.String(100))
+
+	def __repr__(self):
+		return f"Post('{self.title}', '{self.date_posted}','{self.pic_name}')"
+
