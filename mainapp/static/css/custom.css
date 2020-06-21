@@ -160,3 +160,15 @@
 	min-width: 370px;
 	width: 80%;
 }
+.responsive-youtube{
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	height: 0;
+}
+.responsive-youtube iframe{
+	left: 0;
+	top: 0;
+	width: 100%;
+	position: absolute;
+}
