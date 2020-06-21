@@ -47,3 +47,16 @@
     
     box-shadow:-1px 9px 40px -12px rgba(0,0,0.75);
 }
+.responsive-youtube{
+  width: 80%
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.responsive-youtube iframe{
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: absolute;
+}
