@@ -4,13 +4,13 @@ from PIL import Image
 from flask import url_for,request,render_template,redirect,flash,send_file
 from flask_mail import Mail, Message
 from mainapp.cruds import Admissiondb
-from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail,PostForm
+from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail,PostForm,GostForm
 from mainapp import app
 from mainapp import db
 from mainapp import mail
 from mainapp.pdfmaker import pdfgen
 from .cruds import LogUser
-from .cruds import MailRecords,Post
+from .cruds import MailRecords,Post,Gost
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
@@ -75,11 +75,47 @@ def admin():
 			db.session.commit()
 			flash("Your post has been created")
 			return redirect(url_for('home'))
-	return render_template('admin.html',form=form,form2=form2)
+
+	form3=GostForm(request.form)		
+	return render_template('admin.html',form=form,form2=form2,form3=form3)
+
+
+@app.route('/gpost',methods=['GET','POST'])
+@login_required
+def gpost():
+	form=GostForm(request.form)
+	if form.validate_on_submit:
+		f = request.files['pic']
+		if f:
+			print('uploading')
+			pic=save_img(f)
+			picn='../static/gallery/'+pic
+			gost=Gost(pic_name=picn)
+			db.session.add(gost)
+			db.session.commit()	
+	return redirect(url_for('gallery'))		
+
+
+		
+def save_img(form_picture):
+	print('in save pic')
+	random_hex = secrets.token_hex(8)
+	_, f_ext = os.path.splitext(form_picture.filename)
+	picture_fn = random_hex + f_ext
+	print(picture_fn)
+	picture_path = os.path.join(app.root_path, 'static/gallery', picture_fn)
+	print(picture_path)
+	output_size = (640, 480)
+	i = Image.open(form_picture)
+	i.thumbnail(output_size)
+	i.save(picture_path)
+
+	return picture_fn
 
 
 
 
+'''
 from werkzeug.utils import secure_filename
 @app.route('/edit',methods=['GET','POST'])
 @login_required
@@ -101,6 +137,7 @@ def edit():
 		# 	f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename('projectimage'+i+extension)))
 		# flash('file uploaded successfully')
 		# return redirect(url_for('gallery'))
+'''		
 
 
 
@@ -116,15 +153,14 @@ def sendmail():
 	form=SendMail(request.form)
 	if form.validate_on_submit():
 
-		mails=MailRecords.query.filter(MailRecords.email.endswith('.com')).all()
-		print("printing",mails.id)
-		msg = Message(form.sub.data, sender = 'apskanchraparawebsite@gmail.com', recipients = ['beyondquestions@gmail.com'])
+		mails=MailRecords.query.all()
+		msg = Message(form.sub.data, sender = 'apskanchraparawebsite@gmail.com')
 		msg.html=render_template('mail.html',text=form.mess.data)
-		#for mail in mails:
-			#msg.add_recipient(mail.email)
+		for mail1 in mails:
+			msg.add_recipient(mail1.email)
 		mail.send(msg)
 		flash("Your message has been send to the authorities concern!")
-	return render_template('admin.html',form=form)	
+	return redirect(url_for('admin'))	
 			
 
 @app.route('/',methods=['GET','POST'])
@@ -156,28 +192,7 @@ def contact():
 	if form.validate_on_submit():
 		print("hi query person")
 		msg = Message('Hello hi', sender = 'apskanchraparawebsite@gmail.com', recipients = [form.email.data])
-		msg.html = """
-					<!DOCTYPE html>
-					<html>
-						<head>
-							<title>Hi</title>
-						</head>
-						<body>
-							<div>
-								<h1>AMBEDKAR PUBLIC SCHOOL</h1>
-								<p>
-									Thank You for reaching out to us
-									<br>
-								   	We will be contact you with more information soon.
-									<br>
-									Regards,
-									<br>
-									Team APS.
-								</p>
-							</div>
-						</body>
-					</html>
-				   """		
+		msg.html = render_template('mail.html',text="Thank You for contacting Ambedkar Public School. We will come back to you as soon as possible.")
 		mail.send(msg)
 		flash("Your message has been send to the authorities concern!")
 		return redirect(url_for('home'))
@@ -187,16 +202,19 @@ def contact():
 @app.route('/get_logo')
 def get_logo():
 	return send_file('static/images/logo.png',mimetype='image/png')
+
+
 @app.route('/gallery',methods=['GET','POST'])
 def gallery():
+	gosts=Gost.query.all()
 	show_form=True
 	form=NewsletterForm(request.form)
 	if form.validate_on_submit():
 		show_form=False
 		print("entered")
-		return render_template('gallery.html',form=form,show_form=show_form)
+		return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts)
 	print(form.errors)	
-	return render_template('gallery.html',form=form,show_form=show_form)
+	return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts)
 
 @app.route('/about',methods=['GET','POST'])
 def about():
@@ -397,3 +415,14 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('blog'))
+
+
+
+@app.route("/gost/<int:gost_id>/delete", methods=['GET','POST'])
+@login_required
+def delete_gost(gost_id):
+    gost = Gost.query.get_or_404(gost_id)
+    db.session.delete(gost)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('gallery'))    

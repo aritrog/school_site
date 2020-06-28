@@ -201,7 +201,6 @@
                 <div class="form-square">
                     <div class="form-group">
 	    			<h1 style="color:  #4068dd ;font-weight: 500;">Mail</h1>
-	    				{{form.hidden_tag()}}
 	    				{{form.sub.label()}}
 	                    {{form.sub(class="form-control")}}
 	                    {{form.mess.label()}}
@@ -234,6 +233,28 @@
                     	{% endif %}
 	                    <br>
 	                    {{form2.submit(class="btn")}}
+    				</div>
+                </div>                    
+            </form>
+        </div>
+        <div class="row">
+            <form class="form-layout" method="POST" action="{{url_for('gpost')}}" enctype="multipart/form-data">
+                {{form2.hidden_tag()}}
+                <h1 style="font-family: 'Oswald', sans-serif;font-size: 3rem;color:  #b02f1a ">Gallery Post</h1>
+                
+
+                <div class="form-square">
+                    <div class="form-group">
+	    			<h1 style="color:  #4068dd ;font-weight: 500;">Post</h1>
+	                    {{form3.pic.label()}}
+	                    {{form3.pic(class="form-control")}}
+	                    {% if form3.pic.errors %}
+                        {% for error in form.pic.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    	{% endif %}
+	                    <br>
+	                    {{form3.submit(class="btn")}}
     				</div>
                 </div>                    
             </form>

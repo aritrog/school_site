@@ -11,7 +11,8 @@ app.config['SECRET_KEY']='edtgbaebaethetrshertsh'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///admission.db'
 app.config['SQLALCHEMY_BINDS']={'login': 'sqlite:///login.db',
 								'newsletter' : 'sqlite:///newsletter.db',
-								'posts': 'sqlite:///posts.db'}
+								'posts': 'sqlite:///posts.db',
+								'gosts': 'sqlite:///gosts.db'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db=SQLAlchemy(app)
