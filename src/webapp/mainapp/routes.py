@@ -215,7 +215,7 @@ def gallery():
 	print(form.errors)	
 	return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts)
 
-@app.route('/about',methods=['GET','POST'])
+@app.route('/about',methods=['GET'])
 def about():
 	show_form=True
 	form=NewsletterForm(request.form)
