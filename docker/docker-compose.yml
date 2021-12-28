@@ -10,4 +10,21 @@ services:
     expose:
       - 5000
     command: gunicorn -w 1 -t 1000 -b 0.0.0.0:4000 wsgi:app
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ../src/nginx
+      dockerfile: Dockerfile
+
+    environment:
+      - SKIP_PREFLIGHT_CHECK=true
+      - SERVER_NAME=0.0.0.0
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ../certs:/etc/nginx/certs
+    depends_on:
+      - "webapp"
  
