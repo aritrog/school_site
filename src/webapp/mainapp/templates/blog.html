@@ -120,20 +120,22 @@
 				<div class="row1" style="min-width:100%;width: 100%;float: left">
 					<div class=" form-square schoolmagazine-card card-style postcard">
 					<div class="card-body">
-						<h1 style="color:  #4068dd ;font-weight: 500;">{{post.title}}</h1>
+						<h1 style="color:  #4068dd ;font-weight: 500;">{{post.get("title")}}</h1>
 						{% if current_user.is_authenticated %}
-						<a href="{{url_for('delete_post',post_id=post.id)}}" style="float: right;color: red;font-size: 0.7rem;">delete</a>
+						<a href="{{url_for('delete_post',post_id=post.get('_id'))}}" style="float: right;color: red;font-size: 0.7rem;">delete</a>
 						{% endif %}
-					  <p class="card-text" style="font-size: 0.9rem">{{post.content}}</p>
+					  <p class="card-text" style="font-size: 0.9rem">{{post.get("content")}}</p>
 					</div>
-					<img src="{{post.pic_name}}" class="card-img-top" alt="..." style=" border-radius: 0%;height: 300px;">
+                    {% if post.get('pic_name''') %}
+                        <img src="{{url_for('static',filename='postimg/'+post.get('pic_name'))}}" class="card-img-top" alt="..." style=" border-radius: 0%">
+						{% endif %}
 					<div class="card-body">
 					  
 					  
-					  <p class="card-text" style="float:right"><small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
+					  <p class="card-text" style="float:right"><small class="text-muted">{{ post.get('date')}}</small></p>
 					  <button type="button" class="btn btn-primary" style="width: 70px;font-size: 1rem;">👍
 					  </button>
-					  <button type="button" class="btn btn-primary" style="width: auto;font-size: 1rem; "><a href="{{url_for('yoga')}}">Click to go to Event page</a>
+					  <button type="button" class="btn btn-primary" style="width: auto;font-size: 1rem; "><a href="{{post.get('link')}}">Click to go to Event page</a>
 					  </button>
 					</div>
 				  </div>
@@ -189,7 +191,7 @@
                             <li><a href="mailto:#">info@apskanchrapara.org</a></li>
                             <li><a href="#">www.apskanchrapar.org</a></li>
                             <li>63,Netaji Subhas Path, Kanchrapara Loco, Kanchrapara, West Bengal 743145</li>
-                            <li>+91 9903004488</li>
+                            <li>+91 3335531839, +91 9230614678</li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->

@@ -1,9 +1,10 @@
+from datetime import datetime
 import os
 import secrets
 from PIL import Image
 from flask import url_for,request,render_template,redirect,flash,send_file
 from flask_mail import Mail, Message
-from mainapp.cruds import Admissiondb
+from mainapp.cruds import Admissiondb, pdb
 from mainapp.forms import AdmissionForm,ContactForm,NewsletterForm,SendMail,PostForm,GostForm
 from mainapp import app
 from mainapp import db
@@ -67,12 +68,25 @@ def admin():
 			if f:
 				print('uploading')
 				pic_n=save_picture(f)
-				picn='../static/postimg/'+pic_n
-				post=Post(title=form2.title.data,content=form2.content.data,pic_name=picn)
+				picn=pic_n
+				data = {
+					"_id": pdb.posts.count_documents({})+1,
+					"title": form2.title.data,
+					"content": form2.content.data,
+					"link":form2.link.data,
+					"pic_name": picn,
+					"date":datetime.now().strftime('%Y-%m-%d')
+				}
+				# post=Post(title=form2.title.data,content=form2.content.data,pic_name=picn)
 			else:	
-				post=Post(title=form2.title.data,content=form2.content.data)
-			db.session.add(post)
-			db.session.commit()
+				data = {
+					"_id": pdb.posts.count_documents({})+1,
+					"title": form2.title.data,
+					"content": form2.content.data,
+					"link":form2.link.data,
+					"date":datetime.now().strftime('%Y-%m-%d')
+				}
+			res = pdb.posts.insert_one(data)
 			flash("Your post has been created")
 			return redirect(url_for('home'))
 
@@ -143,7 +157,7 @@ def edit():
 
 @app.route('/blog',methods=['GET','POST'])
 def blog():
-	posts=Post.query.all()
+	posts=pdb.posts.find({}).sort("$natural",-1)
 	print("entered")
 	print(posts)
 	return render_template('blog.html', posts=posts)
@@ -398,10 +412,11 @@ def save_picture(form_picture):
 	picture_fn = random_hex + f_ext
 	print(picture_fn)
 	picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
+	print(os.path.join(app.root_path,''))
 	print(picture_path)
 	output_size = (640, 480)
 	i = Image.open(form_picture)
-	i.thumbnail(output_size)
+	# i.thumbnail(output_size)
 	i.save(picture_path)
 
 	return picture_fn
@@ -409,9 +424,7 @@ def save_picture(form_picture):
 @app.route("/post/<int:post_id>/delete", methods=['GET','POST'])
 @login_required
 def delete_post(post_id):
-    post = Post.query.get_or_404(post_id)
-    db.session.delete(post)
-    db.session.commit()
+    res = pdb.posts.delete_one({"_id":post_id})
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('blog'))
 

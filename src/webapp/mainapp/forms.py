@@ -117,6 +117,7 @@ class PostForm(FlaskForm):
 	title=StringField('Title',validators=[DataRequired()])
 	content=TextAreaField('Content',validators=[DataRequired()])
 	pic=FileField('Picture', validators=[FileAllowed(['jpg', 'png'])])
+	link=StringField('Link')
 	submit=SubmitField('Post')
 
 class GostForm(FlaskForm):

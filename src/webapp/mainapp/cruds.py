@@ -1,6 +1,13 @@
 from datetime import datetime
 from flask_login import UserMixin
 from . import db
+import pymongo
+
+
+
+client = pymongo.MongoClient("mongodb://postgresone:12345@cluster0-shard-00-00.fqbos.mongodb.net:27017,cluster0-shard-00-01.fqbos.mongodb.net:27017,cluster0-shard-00-02.fqbos.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-5nkrrm-shard-0&authSource=admin&retryWrites=true&w=majority")
+pdb = client.test
+
 
 
 class MailRecords(db.Model):

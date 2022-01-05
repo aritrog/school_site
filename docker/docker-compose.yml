@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     expose:
       - 5000
-    command: gunicorn -w 1 -t 1000 -b 0.0.0.0:4000 wsgi:app
+    command: gunicorn -w 1 -t 1000 -b 0.0.0.0:4000 main:app  
   nginx:
     container_name: nginx
     restart: always
