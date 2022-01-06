@@ -1,5 +1,4 @@
 from datetime import datetime
-import os
 import secrets
 from PIL import Image
 from flask import url_for,request,render_template,redirect,flash,send_file
@@ -13,8 +12,9 @@ from mainapp.pdfmaker import pdfgen
 from .cruds import LogUser
 from .cruds import MailRecords,Post,Gost
 from flask_login import login_user, logout_user, login_required
+from mainapp.picture_handler import image_handler
 from werkzeug.security import generate_password_hash, check_password_hash
-import os
+import os, uuid
 
 
 ##login and related shit lies here
@@ -67,10 +67,13 @@ def admin():
 			f = request.files['pic']
 			if f:
 				print('uploading')
-				pic_n=save_picture(f)
+				random_hex = secrets.token_hex(8)
+				_, f_ext = os.path.splitext(f.filename)
+				namex = random_hex + f_ext
+				pic_n = image_handler(f,namex,"posts")
 				picn=pic_n
 				data = {
-					"_id": pdb.posts.count_documents({})+1,
+					"_id": str(random_hex),
 					"title": form2.title.data,
 					"content": form2.content.data,
 					"link":form2.link.data,
@@ -102,29 +105,25 @@ def gpost():
 		f = request.files['pic']
 		if f:
 			print('uploading')
-			pic=save_img(f)
-			picn='../static/gallery/'+pic
-			gost=Gost(pic_name=picn)
-			db.session.add(gost)
-			db.session.commit()	
-	return redirect(url_for('gallery'))		
+			random_hex = secrets.token_hex(8)
+			_, f_ext = os.path.splitext(f.filename)
+			namex = random_hex + f_ext
+			pic_n = image_handler(f,namex,"gallery")
+			picn=pic_n
+			data = {
+			"_id": str(random_hex),
+			"title": form.title.data,
+			"pic_name": picn,
+			"date":datetime.now().strftime('%Y-%m-%d')
+			}
+			res = pdb.gallery.insert_one(data)
+			if not pdb.gtop.count_documents({"title":data["title"]}):
+				res = pdb.gtop.insert_one(data)
+			
+	return redirect(url_for('gallery',title='all'))		
 
 
 		
-def save_img(form_picture):
-	print('in save pic')
-	random_hex = secrets.token_hex(8)
-	_, f_ext = os.path.splitext(form_picture.filename)
-	picture_fn = random_hex + f_ext
-	print(picture_fn)
-	picture_path = os.path.join(app.root_path, 'static/gallery', picture_fn)
-	print(picture_path)
-	output_size = (640, 480)
-	i = Image.open(form_picture)
-	i.thumbnail(output_size)
-	i.save(picture_path)
-
-	return picture_fn
 
 
 
@@ -140,7 +139,7 @@ def edit():
 		filename, extension = os.path.splitext(request.files['file'].filename)
 		name='projectimage'+i
 		image.save(r'/root/school_site/mainapp/static/images/%s.jpg' % name)
-		return redirect(url_for('gallery'))
+		return redirect(url_for('gallery',title='all'))
 		# i=request.form.get('spot')
 		# f = request.files['file']
 		# filename, extension = os.path.splitext(f.filename)
@@ -150,7 +149,7 @@ def edit():
 		# else:
 		# 	f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename('projectimage'+i+extension)))
 		# flash('file uploaded successfully')
-		# return redirect(url_for('gallery'))
+		# return redirect(url_for('gallery',title='all'))
 '''		
 
 
@@ -217,19 +216,25 @@ def get_logo():
 	return send_file('static/images/logo.png',mimetype='image/png')
 
 
-@app.route('/gallery',methods=['GET','POST'])
-def gallery():
-	gosts=Gost.query.all()
+@app.route('/gallery/<string:title>',methods=['GET','POST'])
+def gallery(title="all"):
+	
 	show_form=True
 	form=NewsletterForm(request.form)
 	if form.validate_on_submit():
 		show_form=False
 		print("entered")
-		return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts)
+		return redirect(url_for('gallery',title='all'))
 	print(form.errors)	
-	return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts)
+	if title == "all":
+		gosts = pdb.gtop.find({})
+		return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts,show_title=True, title = "Gallery")
+	else:
+		gosts = pdb.gallery.find({"title":title})
+		return render_template('gallery.html',form=form,show_form=show_form,gosts=gosts,show_title=False, title = title)
 
-@app.route('/about',methods=['GET'])
+
+@app.route('/about',methods=['GET']) 
 def about():
 	show_form=True
 	form=NewsletterForm(request.form)
@@ -405,23 +410,9 @@ def admission():
 	return render_template('admission.html', form=form)
 
 
-def save_picture(form_picture):
-	print('in save pic')
-	random_hex = secrets.token_hex(8)
-	_, f_ext = os.path.splitext(form_picture.filename)
-	picture_fn = random_hex + f_ext
-	print(picture_fn)
-	picture_path = os.path.join(app.root_path, 'static/postimg', picture_fn)
-	print(os.path.join(app.root_path,''))
-	print(picture_path)
-	output_size = (640, 480)
-	i = Image.open(form_picture)
-	# i.thumbnail(output_size)
-	i.save(picture_path)
 
-	return picture_fn
 
-@app.route("/post/<int:post_id>/delete", methods=['GET','POST'])
+@app.route("/post/<string:post_id>/delete", methods=['GET','POST'])
 @login_required
 def delete_post(post_id):
     res = pdb.posts.delete_one({"_id":post_id})
@@ -430,11 +421,14 @@ def delete_post(post_id):
 
 
 
-@app.route("/gost/<int:gost_id>/delete", methods=['GET','POST'])
+@app.route("/gost/<string:gost_id>/<int:title>/delete", methods=['GET','POST'])
 @login_required
-def delete_gost(gost_id):
-    gost = Gost.query.get_or_404(gost_id)
-    db.session.delete(gost)
-    db.session.commit()
-    flash('Your post has been deleted!', 'success')
-    return redirect(url_for('gallery'))    
+def delete_gost(gost_id, title):
+	if title:
+		res = pdb.gtop.find_one({"_id":gost_id})
+		title = res.get("title")
+		res = pdb.gallery.delete_many({"title":title})
+		res = pdb.gtop.delete_one({"_id":gost_id})
+	res = pdb.gallery.delete_one({"_id":gost_id})
+	flash('Your post has been deleted!', 'success')
+	return redirect(url_for('gallery',title='all'))    

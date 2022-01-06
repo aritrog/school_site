@@ -166,7 +166,7 @@
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About Us</a></li>
 						<li class="nav-item "><a class="nav-link" href="{{ url_for('course') }}" >Courses</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery',title='all') }}">Gallery</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ url_for('blog') }}">Magazine</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
@@ -247,7 +247,9 @@
 
                 <div class="form-square">
                     <div class="form-group">
-	    			<h1 style="color:  #4068dd ;font-weight: 500;">Post</h1>
+					<h1 style="color:  #4068dd ;font-weight: 500;">Post</h1>
+						{{form3.title.label()}}
+	                    {{form3.title(class="form-control")}}
 	                    {{form3.pic.label()}}
 	                    {{form3.pic(class="form-control")}}
 	                    {% if form3.pic.errors %}

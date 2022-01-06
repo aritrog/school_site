@@ -106,7 +106,8 @@ class Post(db.Model):
 
 class Gost(db.Model):
 	__bind_key__ = 'gosts'
-	id = db.Column(db.Integer, primary_key=True)	
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(1000))
 	pic_name=db.Column(db.String(100),nullable=False)
 
 	def __repr__(self):

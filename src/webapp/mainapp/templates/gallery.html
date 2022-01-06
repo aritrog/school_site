@@ -92,7 +92,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About Us</a></li>
 
                         <li class="nav-item "><a class="nav-link" href="{{ url_for('course') }}" >Courses</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ url_for('gallery', title='all') }}">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('blog') }}">Magazine </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url_for('admission')}}">Admission</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url_for('contact')}}">Contact</a></li>
@@ -110,16 +110,23 @@
 	<section class="gallery-block cards-gallery parallax parallax-off section backim" style="background-image:url({{url_for('static',filename='images/lbck.jpg')}});">
     <div class="container" >
 
-      <h1 style="font-family: 'Sofia', serif;margin-top:10vh;text-align:center;font-size: 5rem;color: #ffc300; text-shadow: 2px 2px #ff7b9c; ">Gallery</h1>
+      <h1 style="font-family: 'Sofia', serif;margin-top:10vh;text-align:center;font-size: 5rem;color: #ffc300; text-shadow: 2px 2px #ff7b9c; ">{{title}}</h1>
       <div class="images" style="margin: 1rem 1rem 1rem 8rem">
 
         {% for gost in gosts %}
         <div class="imagebox">
           {% if current_user.is_authenticated %}
           {{gost.id}}
-            <a href="{{url_for('delete_gost',gost_id=gost.id)}}" style="float: right;color: red;font-size: 0.7rem;">delete</a>
+            <a href="{{url_for('delete_gost',gost_id=gost.get('_id'),title=1 if show_title else 0)}}" style="float: right;color: red;font-size: 0.7rem;">delete</a>
           {% endif %}  
-          <a class="lightbox" href="{{gost.pic_name}}"><img src="{{gost.pic_name}}" class="card-img-top" style="border-radius: 0"></a>
+          <a class="lightbox" href="{{url_for('gallery',title=gost.get('title')) if show_title else gost.get('pic_name')}}">
+              {% if show_title %}
+              <div style="font-size: 1rem;color: #282a36;padding: 1rem;background-color: aliceblue;font-weight: 600;">
+                {{gost.title}}
+              </div>
+              {% endif %}
+              <img src="{{gost.get('pic_name')}}" class="card-img-top" style="border-radius: 0">
+          </a>
         </div>
         {% endfor %}
         
@@ -134,7 +141,7 @@
         <div class="container">
             <div class="row logos">
                 {% if show_form==True %}
-                  <form class="form-layout" method="POST" action="{{url_for('gallery')}}">
+                  <form class="form-layout" method="POST" action="{{url_for('gallery',title='all')}}">
                     {{form.hidden_tag()}}
                     <p style="color: black;font-weight: 600;"><span style="font-size: 2rem">Subscribe to our Newsletter</span> {{form.email(class="specf")}} {{form.submit(class="btn123")}}</p>
                   </form>
@@ -195,8 +202,8 @@
                         </div>
 
                         <ul class="footer-links">
-                            <li><a href="mailto:#">info@apskanchrapara.com</a></li>
-                            <li><a href="#">apskanchrapara.com</a></li>
+                            <li><a href="mailto:#">info@apskanchrapara.org</a></li>
+                            <li><a href="#">apskanchrapara.org</a></li>
                             <li>63,Netaji Subhas Path, Nichubasa, Kanchrapara, West Bengal 743145</li>
                             <li>+91 3335531839, +91 9230614678</li></li>
                         </ul><!-- end links -->
