@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,IntegerField,SelectField,SubmitField,TextAreaField,DateField,RadioField,BooleanField
+from wtforms import StringField,IntegerField,SelectField,SubmitField,TextAreaField,DateField,RadioField,BooleanField,MultipleFileField
 from wtforms.validators import DataRequired, Length, EqualTo
 from flask_wtf.file import FileField, FileRequired, FileAllowed
+
 
 class AdmissionForm(FlaskForm):
 	
@@ -121,6 +122,6 @@ class PostForm(FlaskForm):
 	submit=SubmitField('Post')
 
 class GostForm(FlaskForm):
-	pic=FileField('Picture', validators=[FileAllowed(['jpg', 'png']),DataRequired()])
+	files=MultipleFileField('Files')
 	title = StringField('Title')
 	submit=SubmitField('Post')		

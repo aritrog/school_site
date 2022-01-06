@@ -250,10 +250,10 @@
 					<h1 style="color:  #4068dd ;font-weight: 500;">Post</h1>
 						{{form3.title.label()}}
 	                    {{form3.title(class="form-control")}}
-	                    {{form3.pic.label()}}
-	                    {{form3.pic(class="form-control")}}
-	                    {% if form3.pic.errors %}
-                        {% for error in form.pic.errors %}
+	                    {{form3.files.label()}}
+	                    {{form3.files(class="form-control")}}
+	                    {% if form3.files.errors %}
+                        {% for error in form.files.errors %}
                             <span class="text-danger">{{ error }}</span></br>
                         {% endfor %}
                     	{% endif %}

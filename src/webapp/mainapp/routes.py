@@ -82,8 +82,9 @@ def admin():
 				}
 				# post=Post(title=form2.title.data,content=form2.content.data,pic_name=picn)
 			else:	
+				random_hex = secrets.token_hex(8)
 				data = {
-					"_id": pdb.posts.count_documents({})+1,
+					"_id": random_hex,
 					"title": form2.title.data,
 					"content": form2.content.data,
 					"link":form2.link.data,
@@ -102,12 +103,13 @@ def admin():
 def gpost():
 	form=GostForm(request.form)
 	if form.validate_on_submit:
-		f = request.files['pic']
-		if f:
+		temp =request.files.getlist(form.files.name)
+		print(temp)
+		for f in temp:
 			print('uploading')
 			random_hex = secrets.token_hex(8)
-			_, f_ext = os.path.splitext(f.filename)
-			namex = random_hex + f_ext
+			# _, f_ext = os.path.splitext(f.filename)
+			namex = random_hex + ".jpg"
 			pic_n = image_handler(f,namex,"gallery")
 			picn=pic_n
 			data = {
