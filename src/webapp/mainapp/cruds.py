@@ -5,7 +5,7 @@ import pymongo
 
 
 
-client = pymongo.MongoClient("mongodb://postgresone:12345@cluster0-shard-00-00.fqbos.mongodb.net:27017,cluster0-shard-00-01.fqbos.mongodb.net:27017,cluster0-shard-00-02.fqbos.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-5nkrrm-shard-0&authSource=admin&retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb://sumalori123:12345@ac-kehkmup-shard-00-00.grzkbis.mongodb.net:27017,ac-kehkmup-shard-00-01.grzkbis.mongodb.net:27017,ac-kehkmup-shard-00-02.grzkbis.mongodb.net:27017/?ssl=true&replicaSet=atlas-vcuiad-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0")
 pdb = client.test
 
 
